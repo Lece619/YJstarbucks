@@ -1,9 +1,12 @@
 package DAO;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.StringTokenizer;
 
 
 public class Products {
@@ -20,6 +23,7 @@ public class Products {
 			}else {
 				System.out.println("파일 이미존재함");
 			}
+			setProducts();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -28,13 +32,26 @@ public class Products {
 	
 	private void makeProducts() throws IOException {
 		FileWriter fileWriter = new FileWriter(file);
-		fileWriter.write("test1 100/n");
+		fileWriter.write("test1 100\n");
 		fileWriter.write("test2 323\n");
 		fileWriter.write("test3 444\n");
 		fileWriter.flush();
 		fileWriter.close();
 	} 
 	
+	private void setProducts() throws IOException{
+		FileReader fileReader = new FileReader(file);
+		BufferedReader br = new BufferedReader(fileReader);
+		
+		String line ="";
+		while((line= br.readLine())!=null) {
+			String[] temp = line.split(" ");
+			productPrice.put(temp[0],Integer.parseInt(temp[1]));
+		}
+		System.out.println(productPrice);
+		br.close();
+		fileReader.close();
+	}
 	public int getPrice(String productName) {
 		
 		
