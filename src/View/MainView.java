@@ -37,26 +37,30 @@ public class MainView extends JFrame{
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+		// Y : MainView 배경 이미지 지정
 		ImageIcon icon = new ImageIcon(
 				MainView.class.getResource("../sbPromImg/starbucks.png")
 			);
 		Image img = icon.getImage();
-		Image updateImg = img.getScaledInstance(screenWidth, (screenHeight*5)/6, Image.SCALE_SMOOTH);
-		icon = new ImageIcon(updateImg);
 		
+		// Y : MainView 크기에 맞게 이미지 비율 조절
+		Image updateImg = img.getScaledInstance(screenWidth, (screenHeight*5)/6, Image.SCALE_SMOOTH);
+		icon = new ImageIcon(updateImg);		
 		
 		imgLabel.setIcon(icon);
 		imgLabel.setPreferredSize(new Dimension(screenWidth, screenHeight/6*5));
 		imgLabel.setHorizontalAlignment(JLabel.CENTER);
 		
+		// 버튼 사이즈 정하기
 		start.setPreferredSize(new Dimension(screenWidth/2, screenHeight/6));
 		sales.setPreferredSize(new Dimension(screenWidth/2, screenHeight/6));
 		
+		// 버튼 그리드레이아웃으로 배치
 		btnP.setLayout(gl);
 		btnP.add(start);
 		btnP.add(sales);
 
-//		add(mainP);
+		// MainView에 이미지라벨,버튼 추가
 		getContentPane().add(imgLabel);
 		add(btnP,BorderLayout.SOUTH);
 
