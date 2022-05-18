@@ -23,7 +23,9 @@ public class OrderView extends JFrame{
 	public void startOrderView() {
 		setTitle("스타벅스에 오신것을 환영합니다");
 		setBounds(200,100,screenWidth,screenHeight);
+		setResizable(false);
 		setLayout(new BorderLayout());
+		setLocationRelativeTo(null);
 		
 		JPanel topPanel= makePanel(screenWidth,screenHeight/5,BorderLayout.NORTH);
 		JPanel middlePanel = makePanel(screenWidth,screenHeight*3/5,BorderLayout.CENTER);
