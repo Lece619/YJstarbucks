@@ -8,6 +8,8 @@ import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
 
 public class OrderView extends JFrame{
 	Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
@@ -27,10 +29,15 @@ public class OrderView extends JFrame{
 		setLayout(new BorderLayout());
 		setLocationRelativeTo(null);
 		
-		JPanel topPanel= makePanel(screenWidth,screenHeight/5,BorderLayout.NORTH);
-		JPanel middlePanel = makePanel(screenWidth,screenHeight*3/5,BorderLayout.CENTER);
-		JPanel bottomPanel = makePanel(screenHeight,screenHeight/5,BorderLayout.SOUTH);
+		JPanel topPanel= makePanel(screenWidth,screenHeight/10,BorderLayout.NORTH);
+		JPanel middlePanel = makePanel(screenWidth,screenHeight*5/10,BorderLayout.CENTER);
+		JPanel bottomPanel = makePanel(screenHeight,screenHeight*3/10,BorderLayout.SOUTH);
 		middlePanel.setBackground(Color.black);
+		topPanel.setBackground(Color.blue);
+		//啊款单 菩澄 弊府靛 备己
+		JScrollPane middleScroll = new JScrollPane(middlePanel, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		add(middleScroll,BorderLayout.CENTER);
+		middleScroll.setVisible(true);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
