@@ -25,8 +25,8 @@ public class MainView extends JFrame{
 	
 //	JButton start = new JButton("실행");
 //	JButton sales= new JButton("매출");
-	RoundedButton start = new RoundedButton("Start");
-	RoundedButton sales = new RoundedButton("Sales");
+	RoundedButton start = new RoundedButton("START");
+	RoundedButton sales = new RoundedButton("SALES");
 	
 	GridLayout gl = new GridLayout(1, 2);
 //	FlowLayout fl = new FlowLayout();
