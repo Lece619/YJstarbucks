@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.StringTokenizer;
 
 
-public class Products {
+public class Products{
 	
 	private File file = new File("./src/test.txt");
 	//상품, 가격
