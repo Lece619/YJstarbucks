@@ -62,8 +62,7 @@ public class Products {
 	}
 	public int getPrice(String productName) {
 		
-		
-		return 0;
+		return productPrice.get(productName);
 	}
 	
 	public static void main(String[] args) {
