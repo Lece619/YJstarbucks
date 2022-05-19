@@ -1,13 +1,13 @@
 package View;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.GridLayout;
+import java.awt.FlowLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -22,10 +22,13 @@ public class MainView extends JFrame{
 	JLabel imgLabel = new JLabel();
 	JPanel btnP = new JPanel();	
 	
-	JButton start = new JButton("실행");
-	JButton sales= new JButton("매출");
+//	JButton start = new JButton("실행");
+//	JButton sales= new JButton("매출");
+	RoundedButton start = new RoundedButton("실행");
+	RoundedButton sales = new RoundedButton("매출");
 	
-	GridLayout gl = new GridLayout(1, 1);
+//	GridLayout gl = new GridLayout(1, 2);
+	FlowLayout fl = new FlowLayout();
 
 	public MainView() {
 	}
@@ -53,10 +56,17 @@ public class MainView extends JFrame{
 		
 		// 버튼 사이즈 정하기
 		start.setPreferredSize(new Dimension(screenWidth/2, screenHeight/6));
+//		start.setBorderPainted(false);
+		start.setBackground(Color.white);
 		sales.setPreferredSize(new Dimension(screenWidth/2, screenHeight/6));
+//		sales.setBorderPainted(false);
+		sales.setBackground(Color.white);
 		
 		// 버튼 그리드레이아웃으로 배치
-		btnP.setLayout(gl);
+		btnP.setBackground(Color.black);
+		
+//		btnP.setLayout(gl);
+//		btnP.setLayout(null);
 		btnP.add(start);
 		btnP.add(sales);
 
