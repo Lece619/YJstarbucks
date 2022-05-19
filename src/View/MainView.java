@@ -85,6 +85,7 @@ public class MainView extends JFrame implements ActionListener{
 		
 	}
 	
+	// 나중에 각각 뷰단에 홈화면 버튼 만들면 dispose 버튼 활성화하기
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		System.out.println(e.getActionCommand());
