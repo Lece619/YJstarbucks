@@ -109,7 +109,7 @@ public class OrderView extends JFrame{
 		return panel;
 	}
 	
-	//버튼 만들기 매서드
+	//메뉴 버튼 만들기 매서드
 	public void makeMenuButton(String category) {
 		for(Map.Entry<String, String> product : products.getProductImage().entrySet()) {
 			Image img = new ImageIcon(product.getValue()).getImage();
