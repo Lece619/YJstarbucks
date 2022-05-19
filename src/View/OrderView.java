@@ -66,6 +66,10 @@ public class OrderView extends JFrame{
 				  HORIZONTAL_SCROLLBAR_NEVER);
 		middleScroll.setPreferredSize(new Dimension(screenWidth,(screenHeight*5)/10));
 		middleScroll.setBorder(new LineBorder(Color.black,5));
+		
+		// 스크롤 속도 설정
+		middleScroll.getVerticalScrollBar().setUnitIncrement(16);
+		
 		//가운데 패널 이미지 \ - makeMenuButton
 		//https://laonatti.tistory.com/196
 				//주변없애기
