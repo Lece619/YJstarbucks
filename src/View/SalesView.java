@@ -28,5 +28,15 @@ public class SalesView extends JFrame{
 		setLocationRelativeTo(null);
 		
 	}
+	public JPanel makePanel(int witdh,int height,String position) {
+		JPanel panel = new JPanel();
+		panel.setPreferredSize(new Dimension(witdh,height));
+		panel.setVisible(true);
+		add(panel,position);
+		return panel;
+	}
+	public static void main(String[] args) {
+		
+	}
 
 }
