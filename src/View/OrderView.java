@@ -56,12 +56,13 @@ public class OrderView extends JFrame{
 		
 		//middlePanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 		//middlePanel.setLayout(new FlowLayout());
-		middlePanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+		middlePanel.setLayout(new FlowLayout(FlowLayout.LEFT,5,0));
 //		middlePanel.setLayout(new GridLayout(2,0));
 		JButton buttonTest = new JButton(new ImageIcon(img));
 //		JButton buttonTest = new JButton("");
 		
 		//https://laonatti.tistory.com/196
+		//주변없애기
 		buttonTest.setBorderPainted(false);
 		buttonTest.setPreferredSize(new Dimension(screenWidth/2,screenWidth/6));
 		middlePanel.add(buttonTest);
