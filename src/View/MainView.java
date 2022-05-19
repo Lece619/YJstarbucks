@@ -89,6 +89,7 @@ public class MainView extends JFrame implements ActionListener{
 		switch(e.getActionCommand()) {
 		case "START" :
 			new OrderView().startOrderView();
+			dispose();
 			break;
 		case "SALES" :
 			break;

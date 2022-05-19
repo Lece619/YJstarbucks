@@ -26,6 +26,9 @@ public class OrderView extends JFrame{
 	//넓이는 높이에 3/4 
 	int screenHeight = (dimension.height*2)/3;
 	int screenWidth = (screenHeight*3)/4;
+	
+	Color sbC = new Color(1,98,65);
+	
 	//Products 불러오기
 	public static Products products = new Products();
 	//임시 생성자
@@ -42,7 +45,7 @@ public class OrderView extends JFrame{
 		
 		//탑 패널 구성
 		JPanel topPanel= makePanel(screenWidth,screenHeight/10,BorderLayout.NORTH);
-		topPanel.setBackground(Color.blue);
+		topPanel.setBackground(sbC);
 		
 		//미들 패널 구성
 //		JPanel middlePanel = makePanel(screenWidth,screenHeight*5/10,BorderLayout.CENTER);
