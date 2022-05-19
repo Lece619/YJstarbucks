@@ -13,3 +13,6 @@ public class TestClass {
 	}
 //¸¸µë
 }
+class temp{
+	
+}
