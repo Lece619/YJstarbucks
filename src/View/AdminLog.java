@@ -18,6 +18,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.border.LineBorder;
 
 public class AdminLog extends JFrame implements ActionListener{
 	Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
@@ -35,6 +36,9 @@ public class AdminLog extends JFrame implements ActionListener{
 	Font font = new Font("Courier",Font.PLAIN,screenWidth/25);
 	
 	JPanel topPanel = new JPanel();
+	JPanel topLogo = new JPanel();
+	JPanel topHome = new JPanel();
+	
 	JPasswordField pwField = new JPasswordField();
 //	JButton login = new JButton("Login");
 //	RoundedButton login = new RoundedButton("Login");
@@ -43,7 +47,7 @@ public class AdminLog extends JFrame implements ActionListener{
 	JLabel pwArea = new JLabel("관리자 비밀번호 입력");
 	
 	FlowLayout fl = new FlowLayout();
-	GridLayout gl = new GridLayout(4,0);
+	GridLayout gl = new GridLayout(4,1);
 	
 	
 	public AdminLog() {};
@@ -55,21 +59,30 @@ public class AdminLog extends JFrame implements ActionListener{
 		setLayout(gl);
 		setLocationRelativeTo(null);
 		
+		//topPanel
 		topPanel.setPreferredSize(new Dimension(screenWidth,screenHeight/10));
 		topPanel.setBackground(sbC);
+		topLogo.setPreferredSize(new Dimension(screenWidth/3,screenHeight/10));
+		topLogo.setBackground(sbC);
+		topHome.setPreferredSize(new Dimension(screenWidth/3*6/7,screenHeight/10));
+		topHome.setBackground(sbC);
 		
+		// logo 
 		ImageIcon logoIcon = new ImageIcon(AdminLog.class.getResource("../sbPromImg/starbucksLogo.png"));
 		Image logoImg = logoIcon.getImage();
-		
 		Image updateLogo = logoImg.getScaledInstance(screenHeight/11, screenHeight/11, Image.SCALE_SMOOTH);
-		
 		logoIcon = new ImageIcon(updateLogo);
 		
 		logoLabel.setIcon(logoIcon);
-//		logoLabel.setBounds(screenWidth/5, screenHeight, screenHeight/10, screenHeight/10);
 		logoLabel.setPreferredSize(new Dimension(screenHeight/11, screenHeight/11));
-//		logoLabel.setHorizontalAlignment(JLabel.CENTER);
 	
+		//home버튼
+		Image imgHome = new ImageIcon("src/sbPromImg/homeBtn2.png").getImage(); 
+		imgHome = imgHome.getScaledInstance(screenWidth/11, screenWidth/11, Image.SCALE_SMOOTH);
+		JButton homeBtn = new JButton(new ImageIcon(imgHome));
+		homeBtn.setBackground(sbC);
+		homeBtn.setBorderPainted(false);
+		homeBtn.setPreferredSize(new Dimension(screenHeight/11, screenHeight/11));
 		
 		
 		
@@ -87,12 +100,23 @@ public class AdminLog extends JFrame implements ActionListener{
 		pwArea.setForeground(Color.white);
 		pwField.setSize((screenWidth*2)/6, screenHeight/10);
 		
-		topPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-		topPanel.add(logoLabel);
-		add(topPanel,BorderLayout.NORTH);
-		add(pwArea);
-		add(pwField);
-		add(login);
+		topPanel.setLayout(new FlowLayout(FlowLayout.LEFT,0,0));
+//		topPanel.add(logoLabel);
+//		topPanel.add(homeBtn);
+		
+		topLogo.setLayout(new FlowLayout(FlowLayout.LEFT));
+		topLogo.add(logoLabel);
+		topHome.setLayout(new FlowLayout(FlowLayout.RIGHT,0,0));
+		topHome.add(homeBtn);
+		
+		
+		topPanel.add(topLogo);
+		topPanel.add(topHome);
+		
+		add(topPanel);
+		add(pwArea,gl);
+		add(pwField,gl);
+		add(login,gl);
 	
 		
 		dispose();
