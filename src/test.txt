@@ -1,3 +1,12 @@
 test1	100	src/Imgs/1-01.png
 test2	323	src/Imgs/1-02.png
 test3	444	src/Imgs/1-03.png
+test4	555	src/Imgs/1-04.png
+test5	555	src/Imgs/1-05.png
+test6	555	src/Imgs/1-06.png
+test7	555	src/Imgs/1-07.png
+test8	555	src/Imgs/1-08.png
+test9	555	src/Imgs/1-09.png
+test10	555	src/Imgs/1-10.png
+test11	555	src/Imgs/1-11.png
+test12	555	src/Imgs/1-12.png
