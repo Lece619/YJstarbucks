@@ -64,6 +64,8 @@ public class OrderView extends JFrame{
 		//탑 패널속 작은 패널 -버튼들
 
 		JButton categoriBtn1 = topMenuPanel("커피");
+		categoriBtn1.setBackground(Color.white);
+		categoriBtn1.setForeground(sbC);
 		JButton categoriBtn2 = topMenuPanel("음료");
 		JButton categoriBtn3 = topMenuPanel("푸드");
 		
@@ -72,12 +74,13 @@ public class OrderView extends JFrame{
 		leftPanel4.setPreferredSize(new Dimension(screenWidth*3/7,screenHeight/10));
 		// 홈버튼 
 		leftPanel4.setBackground(sbC);
-		Image imgHome = new ImageIcon("src/sbPromImg/homeBtn.png").getImage(); 
-		imgHome = imgHome.getScaledInstance(screenWidth/11, screenWidth/11, Image.SCALE_SMOOTH);
+		Image imgHome = new ImageIcon("src/sbPromImg/homeBtn2.png").getImage(); 
+		imgHome = imgHome.getScaledInstance(screenWidth/10, screenWidth/10, Image.SCALE_SMOOTH);
 		JButton homeBtn = new JButton(new ImageIcon(imgHome));
-	
-		homeBtn.setPreferredSize(new Dimension(screenWidth/11,screenWidth/11));
+		
+		homeBtn.setPreferredSize(new Dimension(screenWidth/10,screenWidth/10));
 		homeBtn.setBackground(sbC);
+		homeBtn.setBorderPainted(false);
 		leftPanel4.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		leftPanel4.add(homeBtn);
 		
