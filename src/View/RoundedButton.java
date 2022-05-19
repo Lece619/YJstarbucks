@@ -34,7 +34,7 @@ public class RoundedButton extends JButton{
 		}else {
 			graphics.setColor(bgC);
 		}
-		graphics.fillRoundRect(0, 0, width, height, 10, 10);
+		graphics.fillRoundRect(0, 0, width, height, 150, 150);
 		FontMetrics fontMetrics = graphics.getFontMetrics();
 		Rectangle stringBounds = fontMetrics.getStringBounds(this.getText(), graphics).getBounds();
 		int textX = (width-stringBounds.width) /2;

@@ -3,7 +3,7 @@ package View;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
 
@@ -27,8 +27,10 @@ public class MainView extends JFrame{
 	RoundedButton start = new RoundedButton("실행");
 	RoundedButton sales = new RoundedButton("매출");
 	
-//	GridLayout gl = new GridLayout(1, 2);
-	FlowLayout fl = new FlowLayout();
+	GridLayout gl = new GridLayout(1, 2);
+//	FlowLayout fl = new FlowLayout();
+	
+	Color sbC = new Color(1,98,65);
 
 	public MainView() {
 	}
@@ -63,10 +65,10 @@ public class MainView extends JFrame{
 		sales.setBackground(Color.white);
 		
 		// 버튼 그리드레이아웃으로 배치
-		btnP.setBackground(Color.black);
-		
-//		btnP.setLayout(gl);
-//		btnP.setLayout(null);
+		btnP.setBackground(sbC);
+//		fl.setAlignment(FlowLayout.CENTER);
+		btnP.setLayout(gl);
+//		btnP.setLayout(fl);
 		btnP.add(start);
 		btnP.add(sales);
 
