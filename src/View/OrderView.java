@@ -69,9 +69,18 @@ public class OrderView extends JFrame{
 		
 		//탑 - 홈버튼 패널위치
 		JPanel leftPanel4 = new JPanel();
-		leftPanel4.setPreferredSize(new Dimension(screenWidth/2,screenHeight/10));
-		topPanel.add(leftPanel4);
+		leftPanel4.setPreferredSize(new Dimension(screenWidth*3/7,screenHeight/10));
+		// 홈버튼 
+		leftPanel4.setBackground(sbC);
+		Image imgHome = new ImageIcon("src/sbPromImg/starbucksLogo.png").getImage(); 
+		imgHome = imgHome.getScaledInstance(screenWidth/11, screenWidth/11, Image.SCALE_SMOOTH);
+		JButton homeBtn = new JButton(new ImageIcon(imgHome));
+	
+		homeBtn.setPreferredSize(new Dimension(screenWidth/11,screenWidth/11));
+		leftPanel4.setLayout(new FlowLayout(FlowLayout.RIGHT));
+		leftPanel4.add(homeBtn);
 		
+		topPanel.add(leftPanel4);
 		
 		
 		
