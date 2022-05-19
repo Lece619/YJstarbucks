@@ -11,6 +11,7 @@ import java.awt.Image;
 import java.awt.Insets;
 import java.awt.Toolkit;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,6 +22,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.border.LineBorder;
+import javax.swing.text.html.HTMLDocument.Iterator;
 
 import DAO.Products;
 
@@ -30,8 +32,11 @@ public class OrderView extends JFrame{
 	//넓이는 높이에 3/4 
 	int screenHeight = (dimension.height*2)/3;
 	int screenWidth = (screenHeight*3)/4;
+	//탑패널
+	JPanel topPanel;
 	//미들패널
 	JPanel middlePanel;
+	
 	
 	Color sbC = new Color(1,98,65);
 	
@@ -53,8 +58,22 @@ public class OrderView extends JFrame{
 		setLocationRelativeTo(null);
 		
 		//탑 패널 구성
-		JPanel topPanel= makePanel(screenWidth,screenHeight/10,BorderLayout.NORTH);
+		topPanel= makePanel(screenWidth,screenHeight/10,BorderLayout.NORTH);
 		topPanel.setBackground(sbC);
+		topPanel.setLayout(new FlowLayout(FlowLayout.LEFT,0,0));
+		//탑 패널속 작은 패널 -버튼들
+
+		JButton categoriBtn1 = topMenuPanel("커피");
+		JButton categoriBtn2 = topMenuPanel("음료");
+		JButton categoriBtn3 = topMenuPanel("푸드");
+		
+		//탑 - 홈버튼 패널위치
+		JPanel leftPanel4 = new JPanel();
+		leftPanel4.setPreferredSize(new Dimension(screenWidth/2,screenHeight/10));
+		topPanel.add(leftPanel4);
+		
+		
+		
 		
 		//미들 패널 구성
 		middlePanel = new JPanel();
@@ -110,15 +129,34 @@ public class OrderView extends JFrame{
 		return panel;
 	}
 	
+	//탑 패널 카테고리 버튼 만들기 
+	public JButton topMenuPanel(String btnName) {
+		JPanel panel = new JPanel();
+		panel.setPreferredSize(new Dimension(screenWidth/6,screenHeight/10));
+		panel.setLayout(new BorderLayout());
+		panel.setBackground(sbC);
+		JButton button = new JButton(btnName);
+		button.setBackground(sbC);
+		button.setBorderPainted(false);
+		button.setForeground(Color.white);
+		panel.add(button,BorderLayout.SOUTH);
+		topPanel.add(panel);
+		
+		return button;
+	}
+	
+	
 	//메뉴 버튼 만들기 매서드
 	public void makeMenuButton(String category) {
+		
 		for(Map.Entry<String, String> product : products.getProductImage().entrySet()) {
 			Image img = new ImageIcon(product.getValue()).getImage();
 			img = img.getScaledInstance(screenWidth/2*13/14, screenWidth/6*13/14, Image.SCALE_SMOOTH);
 			JButton jButton = new JButton(new ImageIcon(img));	
 			jButton.setPreferredSize(new Dimension(screenWidth/2*13/14,screenWidth/6*13/14));
 			middlePanel.add(jButton);
-			buttonArray.add(jButton);					
+			buttonArray.add(jButton);
+			System.out.println(product.getKey()+" "+product.getValue());
 		}
 	}
 	

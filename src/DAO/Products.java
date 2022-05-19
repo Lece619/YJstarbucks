@@ -7,6 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.StringTokenizer;
+import java.util.TreeMap;
 
 
 public class Products{
@@ -15,7 +16,7 @@ public class Products{
 	//상품, 가격
 	private HashMap<String,Integer> productPrice = new HashMap<>();
 	//상품, 파일경로
-	private HashMap<String,String> productImage = new HashMap<>();
+	private TreeMap<String,String> productImage = new TreeMap<>();
 	
 	public Products() {
 		try {
@@ -38,7 +39,7 @@ public class Products{
 		return productPrice;
 	}
 	//product - 이미지
-	public HashMap<String, String> getProductImage(){
+	public TreeMap<String, String> getProductImage(){
 		return productImage;
 	}
 
