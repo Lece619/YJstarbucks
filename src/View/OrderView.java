@@ -73,7 +73,7 @@ public class OrderView extends JFrame{
 		
 		buttonTest.setPreferredSize(new Dimension(screenWidth/2,screenWidth/6));
 		middlePanel.add(buttonTest);
-		
+				
 		JButton buttonTest2 = new JButton(new ImageIcon(img));
 		buttonTest2.setPreferredSize(new Dimension(screenWidth/2,screenWidth/6));
 		middlePanel.add(buttonTest2);
