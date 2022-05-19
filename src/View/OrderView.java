@@ -89,7 +89,8 @@ public class OrderView extends JFrame{
 		
 	
 		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		dispose();
 		setVisible(true);
 	}
 	
