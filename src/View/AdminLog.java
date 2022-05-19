@@ -6,11 +6,12 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -23,11 +24,11 @@ public class AdminLog extends JFrame implements ActionListener{
 	int screenHeight = (dimension.height*2)/3;
 	int screenWidth = (screenHeight*3)/4;
 	
-	public String getAdminPw() {
-		return adminPw;
-	}
+	JLabel logoLabel = new JLabel();
+	
 
 	private String adminPw = "1234";
+
 	
 	Color sbC = new Color(1,98,65);
 	Font font = new Font("Santana-Black",Font.BOLD,25);
@@ -54,6 +55,21 @@ public class AdminLog extends JFrame implements ActionListener{
 		topPanel.setPreferredSize(new Dimension(screenWidth,screenHeight/10));
 		topPanel.setBackground(sbC);
 		
+		ImageIcon logoIcon = new ImageIcon(AdminLog.class.getResource("../sbPromImg/starbucksLogo.png"));
+		Image logoImg = logoIcon.getImage();
+		
+		Image updateLogo = logoImg.getScaledInstance(screenHeight/10, screenHeight/10, Image.SCALE_SMOOTH);
+		
+		logoIcon = new ImageIcon(updateLogo);
+		
+		logoLabel.setIcon(logoIcon);
+//		logoLabel.setBounds(screenWidth/5, screenHeight, screenHeight/10, screenHeight/10);
+		logoLabel.setPreferredSize(new Dimension(screenHeight/10, screenHeight/10));
+//		logoLabel.setHorizontalAlignment(JLabel.CENTER);
+	
+		
+		
+		
 		pwField.setFont(font);
 		pwArea.setFont(font);
 		login.setFont(font);
@@ -61,6 +77,9 @@ public class AdminLog extends JFrame implements ActionListener{
 		pwArea.setSize((screenWidth*2)/6, screenHeight/10);
 		pwField.setSize((screenWidth*2)/6, screenHeight/10);
 		
+		
+		
+		topPanel.add(logoLabel);
 		add(topPanel,BorderLayout.NORTH);
 		add(pwArea);
 		add(pwField);
@@ -69,6 +88,10 @@ public class AdminLog extends JFrame implements ActionListener{
 		
 		dispose();
 		setVisible(true);
+	}
+
+	public String getAdminPw() {
+		return adminPw;
 	}
 	
 	@Override
