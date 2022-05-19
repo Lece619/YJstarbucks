@@ -45,7 +45,7 @@ public class SalesView extends JFrame{
 		return panel;
 	}
 	public static void main(String[] args) {
-		
+		new SalesView().startSalesView();
 	}
 
 }
