@@ -60,12 +60,13 @@ public class OrderView extends JFrame{
 		middlePanel = new JPanel();
 		middlePanel.setPreferredSize(new Dimension(screenWidth,(screenHeight*6)/7));
 		middlePanel.setVisible(true);
-		middlePanel.setLayout(new FlowLayout(FlowLayout.LEFT,0,5));
+		middlePanel.setBackground(sbC);
+		middlePanel.setLayout(new FlowLayout(FlowLayout.LEFT,0,0));
 		JScrollPane middleScroll = new JScrollPane(middlePanel,
 				  JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.
 				  HORIZONTAL_SCROLLBAR_NEVER);
 		middleScroll.setPreferredSize(new Dimension(screenWidth,(screenHeight*5)/10));
-		middleScroll.setBorder(new LineBorder(Color.black,5));
+		
 		
 		// 스크롤 속도 설정
 		middleScroll.getVerticalScrollBar().setUnitIncrement(16);
@@ -113,9 +114,9 @@ public class OrderView extends JFrame{
 	public void makeMenuButton(String category) {
 		for(Map.Entry<String, String> product : products.getProductImage().entrySet()) {
 			Image img = new ImageIcon(product.getValue()).getImage();
-			img = img.getScaledInstance(screenWidth/2*13/14, screenWidth/6, Image.SCALE_SMOOTH);
+			img = img.getScaledInstance(screenWidth/2*13/14, screenWidth/6*13/14, Image.SCALE_SMOOTH);
 			JButton jButton = new JButton(new ImageIcon(img));	
-			jButton.setPreferredSize(new Dimension(screenWidth/2*13/14,screenWidth/6));
+			jButton.setPreferredSize(new Dimension(screenWidth/2*13/14,screenWidth/6*13/14));
 			middlePanel.add(jButton);
 			buttonArray.add(jButton);					
 		}

@@ -12,6 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -31,12 +32,13 @@ public class AdminLog extends JFrame implements ActionListener{
 
 	
 	Color sbC = new Color(1,98,65);
-	Font font = new Font("Santana-Black",Font.BOLD,25);
+	Font font = new Font("Santana-Black",Font.BOLD,screenWidth/25);
 	
 	JPanel topPanel = new JPanel();
 	JPasswordField pwField = new JPasswordField();
 //	JButton login = new JButton("Login");
-	RoundedButton2 login = new RoundedButton2("Login");
+//	RoundedButton login = new RoundedButton("Login");
+	JButton login = new JButton("Login");
 	JLabel pwArea = new JLabel("관리자 비밀번호 입력");
 	
 	FlowLayout fl = new FlowLayout();
@@ -58,13 +60,13 @@ public class AdminLog extends JFrame implements ActionListener{
 		ImageIcon logoIcon = new ImageIcon(AdminLog.class.getResource("../sbPromImg/starbucksLogo.png"));
 		Image logoImg = logoIcon.getImage();
 		
-		Image updateLogo = logoImg.getScaledInstance(screenHeight/10, screenHeight/10, Image.SCALE_SMOOTH);
+		Image updateLogo = logoImg.getScaledInstance(screenHeight/11, screenHeight/11, Image.SCALE_SMOOTH);
 		
 		logoIcon = new ImageIcon(updateLogo);
 		
 		logoLabel.setIcon(logoIcon);
 //		logoLabel.setBounds(screenWidth/5, screenHeight, screenHeight/10, screenHeight/10);
-		logoLabel.setPreferredSize(new Dimension(screenHeight/10, screenHeight/10));
+		logoLabel.setPreferredSize(new Dimension(screenHeight/11, screenHeight/11));
 //		logoLabel.setHorizontalAlignment(JLabel.CENTER);
 	
 		
@@ -72,13 +74,19 @@ public class AdminLog extends JFrame implements ActionListener{
 		
 		pwField.setFont(font);
 		pwArea.setFont(font);
+		pwArea.setHorizontalAlignment(JLabel.CENTER);
 		login.setFont(font);
+		login.setOpaque(true);
+		login.setBackground(sbC);
+		login.setForeground(Color.white);
 		login.addActionListener(this);
 		pwArea.setSize((screenWidth*2)/6, screenHeight/10);
+		pwArea.setBackground(sbC);
+		pwArea.setOpaque(true);
+		pwArea.setForeground(Color.white);
 		pwField.setSize((screenWidth*2)/6, screenHeight/10);
 		
-		
-		
+		topPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		topPanel.add(logoLabel);
 		add(topPanel,BorderLayout.NORTH);
 		add(pwArea);
@@ -100,6 +108,7 @@ public class AdminLog extends JFrame implements ActionListener{
 
 		if(e.getActionCommand().equals("Login")) {
 			boolean flag=true;
+
 			if(getAdminPw().length()!=pwField.getPassword().length) {
 				flag=false;
 			}
