@@ -95,7 +95,8 @@ public class MainView extends JFrame implements ActionListener{
 //			dispose();
 			break;
 		case "SALES" :
-			new SalesView().startSalesView();
+			new AdminLog().startAdminLog();
+//			new SalesView().startSalesView();
 //			dispose();
 			break;
 		}
