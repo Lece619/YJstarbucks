@@ -27,6 +27,15 @@ public class SalesView extends JFrame{
 		setLayout(new BorderLayout());
 		setLocationRelativeTo(null);
 		
+		JPanel topPanel= makePanel(screenWidth,screenHeight/10,BorderLayout.NORTH);
+		topPanel.setBackground(sbC);
+		
+		
+		
+		
+		dispose();
+		setVisible(true);
+		
 	}
 	public JPanel makePanel(int witdh,int height,String position) {
 		JPanel panel = new JPanel();
