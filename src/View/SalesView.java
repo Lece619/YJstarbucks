@@ -3,6 +3,7 @@ package View;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
@@ -16,12 +17,13 @@ public class SalesView extends JFrame{
 	int screenWidth = (screenHeight*3)/4;
 	
 	Color sbC = new Color(1,98,65);
+	Font font = new Font("Impact",Font.BOLD,screenWidth/15);
 	
 	public SalesView() {};
 	
 	public void startSalesView() {
 		
-		setTitle("스타벅스 관리자 페이지");
+		setTitle("스타벅스 매출관리 페이지");
 		setSize(screenWidth,screenHeight);
 		setResizable(false);
 		setLayout(new BorderLayout());

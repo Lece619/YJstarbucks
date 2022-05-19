@@ -33,7 +33,7 @@ public class MainView extends JFrame implements ActionListener{
 	GridLayout gl = new GridLayout(1, 2);
 	
 	Color sbC = new Color(1,98,65);
-	Font font = new Font("Santana-Black",Font.BOLD,screenWidth/15);
+	Font font = new Font("Impact",Font.BOLD,screenWidth/15);
 
 	public MainView() {
 	}

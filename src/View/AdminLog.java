@@ -32,12 +32,13 @@ public class AdminLog extends JFrame implements ActionListener{
 
 	
 	Color sbC = new Color(1,98,65);
-	Font font = new Font("Santana-Black",Font.BOLD,screenWidth/25);
+	Font font = new Font("Courier",Font.PLAIN,screenWidth/25);
 	
 	JPanel topPanel = new JPanel();
 	JPasswordField pwField = new JPasswordField();
 //	JButton login = new JButton("Login");
 //	RoundedButton login = new RoundedButton("Login");
+	
 	JButton login = new JButton("Login");
 	JLabel pwArea = new JLabel("관리자 비밀번호 입력");
 	
