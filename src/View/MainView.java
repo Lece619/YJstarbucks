@@ -43,7 +43,7 @@ public class MainView extends JFrame implements ActionListener{
 		setBounds(200,100,screenWidth,screenHeight);
 		setResizable(false);
 		setLocationRelativeTo(null);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 		
 		// Y : MainView 배경 이미지 지정
 		ImageIcon icon = new ImageIcon(
@@ -79,6 +79,8 @@ public class MainView extends JFrame implements ActionListener{
 		getContentPane().add(imgLabel);
 		add(btnP,BorderLayout.SOUTH);
 
+//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		dispose();
 		setVisible(true);
 		
 	}
@@ -89,9 +91,10 @@ public class MainView extends JFrame implements ActionListener{
 		switch(e.getActionCommand()) {
 		case "START" :
 			new OrderView().startOrderView();
-			dispose();
+//			dispose();
 			break;
 		case "SALES" :
+//			dispose();
 			break;
 		}
 		
