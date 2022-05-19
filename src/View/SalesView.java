@@ -21,8 +21,8 @@ public class SalesView extends JFrame{
 	
 	public void startSalesView() {
 		
-		setTitle("스타벅스에 오신것을 환영합니다");
-		setBounds(200,100,screenWidth,screenHeight);
+		setTitle("스타벅스 관리자 페이지");
+		setSize(screenWidth,screenHeight);
 		setResizable(false);
 		setLayout(new BorderLayout());
 		setLocationRelativeTo(null);
@@ -37,6 +37,7 @@ public class SalesView extends JFrame{
 		setVisible(true);
 		
 	}
+	
 	public JPanel makePanel(int witdh,int height,String position) {
 		JPanel panel = new JPanel();
 		panel.setPreferredSize(new Dimension(witdh,height));
@@ -44,6 +45,7 @@ public class SalesView extends JFrame{
 		add(panel,position);
 		return panel;
 	}
+	
 	public static void main(String[] args) {
 		new SalesView().startSalesView();
 	}

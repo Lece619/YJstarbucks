@@ -46,7 +46,7 @@ public class OrderView extends JFrame{
 	
 	public void startOrderView() {
 		setTitle("스타벅스에 오신것을 환영합니다");
-		setBounds(200,100,screenWidth,screenHeight);
+		setSize(screenWidth,screenHeight);
 		setResizable(false);
 		setLayout(new BorderLayout());
 		setLocationRelativeTo(null);

@@ -40,7 +40,7 @@ public class MainView extends JFrame implements ActionListener{
 	
 	public void frameTest() {
 		setTitle("스타벅스에 오신것을 환영합니다");
-		setBounds(200,100,screenWidth,screenHeight);
+		setSize(screenWidth,screenHeight);
 		setResizable(false);
 		setLocationRelativeTo(null);
 
