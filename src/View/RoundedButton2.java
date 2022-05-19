@@ -11,18 +11,18 @@ import javax.swing.Action;
 import javax.swing.Icon;
 import javax.swing.JButton;
 
-public class RoundedButton extends JButton{
-	public RoundedButton() {super(); decorate();}
-	public RoundedButton(String text) {super(text); decorate();}
-	public RoundedButton(Action action) {super(action); decorate();}
-	public RoundedButton(Icon icon) {super(icon); decorate();}
-	public RoundedButton(String text,Icon icon) {super(text,icon); decorate();}
+public class RoundedButton2 extends JButton{
+	public RoundedButton2() {super(); decorate();}
+	public RoundedButton2(String text) {super(text); decorate();}
+	public RoundedButton2(Action action) {super(action); decorate();}
+	public RoundedButton2(Icon icon) {super(icon); decorate();}
+	public RoundedButton2(String text,Icon icon) {super(text,icon); decorate();}
 	protected void decorate() {setBorderPainted(false); setOpaque(false);}
 	
 	@Override
 	protected void paintComponent(Graphics g) {
-		Color bgC = new Color(255,247,242); //버튼 배경색 결정(흰색)
-		Color fnC = new Color(1,98,65); // 버튼 글자색 결정 (짙은 녹색)
+		Color bgC = new Color(1,98,65); //버튼 배경색 결정 (짙은녹색)
+		Color fnC = new Color(255,247,242); // 버튼 글자색 결정 (흰색)
 		int width = getWidth();
 		int height = getHeight();
 		Graphics2D graphics = (Graphics2D) g;
