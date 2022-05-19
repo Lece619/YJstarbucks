@@ -12,6 +12,7 @@ import java.awt.Insets;
 import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -28,6 +29,8 @@ public class OrderView extends JFrame{
 	//넓이는 높이에 3/4 
 	int screenHeight = (dimension.height*2)/3;
 	int screenWidth = (screenHeight*3)/4;
+	//미들패널
+	JPanel middlePanel;
 	
 	Color sbC = new Color(1,98,65);
 	
@@ -53,9 +56,10 @@ public class OrderView extends JFrame{
 		topPanel.setBackground(sbC);
 		
 		//미들 패널 구성
-		JPanel middlePanel = new JPanel();
+		middlePanel = new JPanel();
 		middlePanel.setPreferredSize(new Dimension(screenWidth,(screenHeight*5)/10));
 		middlePanel.setVisible(true);
+		middlePanel.setLayout(new FlowLayout(FlowLayout.LEFT,0,5));
 		JScrollPane middleScroll = new JScrollPane(middlePanel,
 				  JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.
 				  HORIZONTAL_SCROLLBAR_NEVER);
@@ -65,39 +69,15 @@ public class OrderView extends JFrame{
 				//주변없애기
 				//buttonTest.setBorderPainted(false);
 				
-		Image img = new ImageIcon("src/Imgs/1-01.png").getImage();
-		img = img.getScaledInstance(screenWidth/2, screenWidth/6, Image.SCALE_SMOOTH);
-		middlePanel.setLayout(new FlowLayout(FlowLayout.LEFT,0,5));
+		/* 이미지 버튼 구성단 - makeMenuButton 매서드로 구현
+		 * Image img = new ImageIcon("src/Imgs/1-01.png").getImage(); img =
+		 * img.getScaledInstance(screenWidth/2, screenWidth/6, Image.SCALE_SMOOTH);
+		 * JButton buttonTest = new JButton(new ImageIcon(img));
+		 * buttonTest.setPreferredSize(new Dimension(screenWidth/2,screenWidth/6));
+		 * middlePanel.add(buttonTest);
+		 */
 		
-		JButton buttonTest = new JButton(new ImageIcon(img));
-		
-		buttonTest.setPreferredSize(new Dimension(screenWidth/2,screenWidth/6));
-		middlePanel.add(buttonTest);
-		
-		JButton buttonTest2 = new JButton(new ImageIcon(img));
-		buttonTest2.setPreferredSize(new Dimension(screenWidth/2,screenWidth/6));
-		middlePanel.add(buttonTest2);
-		JButton buttonTest3 = new JButton(new ImageIcon(img));
-		buttonTest3.setPreferredSize(new Dimension(screenWidth/2,screenWidth/6));
-		middlePanel.add(buttonTest3);
-		JButton buttonTest4 = new JButton(new ImageIcon(img));
-		buttonTest4.setPreferredSize(new Dimension(screenWidth/2,screenWidth/6));
-		middlePanel.add(buttonTest4);
-		JButton buttonTest5 = new JButton(new ImageIcon(img));
-		buttonTest5.setPreferredSize(new Dimension(screenWidth/2,screenWidth/6));
-		middlePanel.add(buttonTest5);
-		JButton buttonTest6 = new JButton(new ImageIcon(img));
-		buttonTest6.setPreferredSize(new Dimension(screenWidth/2,screenWidth/6));
-		middlePanel.add(buttonTest6);
-		JButton buttonTest7 = new JButton(new ImageIcon(img));
-		buttonTest7.setPreferredSize(new Dimension(screenWidth/2,screenWidth/6));
-		middlePanel.add(buttonTest7);
-		Image imgTest3 = new ImageIcon(products.getImg("test3")).getImage();
-		imgTest3 = imgTest3.getScaledInstance(screenWidth/2, screenWidth/6, Image.SCALE_SMOOTH);
-		System.out.println("이미지 경로" + products.getImg("test3"));
-		JButton buttonTest8 = new JButton(new ImageIcon(imgTest3));
-		buttonTest8.setPreferredSize(new Dimension(screenWidth/2,screenWidth/6));
-		middlePanel.add(buttonTest8);
+		makeMenuButton(null);
 		
 		
 		
@@ -123,7 +103,14 @@ public class OrderView extends JFrame{
 	}
 	
 	public void makeMenuButton(String category) {
-		
+		for(Map.Entry<String, String> product : products.getProductImage().entrySet()) {
+			Image img = new ImageIcon(product.getValue()).getImage();
+			img = img.getScaledInstance(screenWidth/2, screenWidth/6, Image.SCALE_SMOOTH);
+			JButton jButton = new JButton(new ImageIcon(img));	
+			jButton.setPreferredSize(new Dimension(screenWidth/2,screenWidth/6));
+			middlePanel.add(jButton);
+			buttonArray.add(jButton);					
+		}
 	}
 	
 	

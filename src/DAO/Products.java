@@ -62,10 +62,6 @@ public class Products {
 			productPrice.put(temp[0],Integer.parseInt(temp[1]));
 			productImage.put(temp[0],temp[2]);
 		}
-		System.out.println("메뉴- 가격");
-		System.out.println(productPrice);
-		System.out.println("메뉴- 이미지 경로");
-		System.out.println(productImage);
 		br.close();
 		fileReader.close();
 	}
