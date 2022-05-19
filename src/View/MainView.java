@@ -7,13 +7,15 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class MainView extends JFrame{
+public class MainView extends JFrame implements ActionListener{
 	Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
 //높이는 모니터의 2/3 
 //넓이는 높이에 3/4 
@@ -29,7 +31,6 @@ public class MainView extends JFrame{
 	RoundedButton sales = new RoundedButton("SALES");
 	
 	GridLayout gl = new GridLayout(1, 2);
-//	FlowLayout fl = new FlowLayout();
 	
 	Color sbC = new Color(1,98,65);
 	Font font = new Font("Santana-Black",Font.BOLD,50);
@@ -62,15 +63,15 @@ public class MainView extends JFrame{
 		start.setPreferredSize(new Dimension(screenWidth/2, screenHeight/6));
 		start.setBackground(Color.white);
 		start.setFont(font);
+		start.addActionListener(this);
 		sales.setPreferredSize(new Dimension(screenWidth/2, screenHeight/6));
 		sales.setBackground(Color.white);
 		sales.setFont(font);
+		sales.addActionListener(this);
 		
 		// 버튼 그리드레이아웃으로 배치
 		btnP.setBackground(sbC);
-//		fl.setAlignment(FlowLayout.CENTER);
 		btnP.setLayout(gl);
-//		btnP.setLayout(fl);
 		btnP.add(start);
 		btnP.add(sales);
 
@@ -82,7 +83,21 @@ public class MainView extends JFrame{
 		
 	}
 	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		System.out.println(e.getActionCommand());
+		switch(e.getActionCommand()) {
+		case "START" :
+			new OrderView().startOrderView();
+			break;
+		case "SALES" :
+			break;
+		}
+		
+	}
+	
 	public static void main(String[] args) {
 		new MainView().frameTest();
 	}
+
 }
