@@ -3,6 +3,7 @@ package View;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -24,13 +25,14 @@ public class MainView extends JFrame{
 	
 //	JButton start = new JButton("실행");
 //	JButton sales= new JButton("매출");
-	RoundedButton start = new RoundedButton("실행");
-	RoundedButton sales = new RoundedButton("매출");
+	RoundedButton start = new RoundedButton("Start");
+	RoundedButton sales = new RoundedButton("Sales");
 	
 	GridLayout gl = new GridLayout(1, 2);
 //	FlowLayout fl = new FlowLayout();
 	
 	Color sbC = new Color(1,98,65);
+	Font font = new Font("Santana-Black",Font.BOLD,50);
 
 	public MainView() {
 	}
@@ -58,11 +60,11 @@ public class MainView extends JFrame{
 		
 		// 버튼 사이즈 정하기
 		start.setPreferredSize(new Dimension(screenWidth/2, screenHeight/6));
-//		start.setBorderPainted(false);
 		start.setBackground(Color.white);
+		start.setFont(font);
 		sales.setPreferredSize(new Dimension(screenWidth/2, screenHeight/6));
-//		sales.setBorderPainted(false);
 		sales.setBackground(Color.white);
+		sales.setFont(font);
 		
 		// 버튼 그리드레이아웃으로 배치
 		btnP.setBackground(sbC);

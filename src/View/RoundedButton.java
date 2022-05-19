@@ -22,7 +22,7 @@ public class RoundedButton extends JButton{
 	@Override
 	protected void paintComponent(Graphics g) {
 		Color bgC = new Color(255,247,242); //버튼 배경색 결정
-		Color fnC = new Color(247,99,12); // 버튼 글자색 결정
+		Color fnC = new Color(1,98,65); // 버튼 글자색 결정
 		int width = getWidth();
 		int height = getHeight();
 		Graphics2D graphics = (Graphics2D) g;
@@ -34,7 +34,7 @@ public class RoundedButton extends JButton{
 		}else {
 			graphics.setColor(bgC);
 		}
-		graphics.fillRoundRect(0, 0, width, height, 150, 150);
+		graphics.fillRoundRect(0, 0, width, height, 100, 100);
 		FontMetrics fontMetrics = graphics.getFontMetrics();
 		Rectangle stringBounds = fontMetrics.getStringBounds(this.getText(), graphics).getBounds();
 		int textX = (width-stringBounds.width) /2;
