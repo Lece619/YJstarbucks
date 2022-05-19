@@ -39,7 +39,7 @@ public class OrderView extends JFrame{
 		JPanel topPanel= makePanel(screenWidth,screenHeight/10,BorderLayout.NORTH);
 		JPanel middlePanel = makePanel(screenWidth+16,screenHeight*5/10,BorderLayout.CENTER);
 		JPanel bottomPanel = makePanel(screenWidth,screenHeight*3/10,BorderLayout.SOUTH);
-		middlePanel.setBackground(Color.black);
+		middlePanel.setBackground(Color.white);
 		topPanel.setBackground(Color.blue);
 		//啊款单 菩澄 弊府靛 备己
 		/*
@@ -57,13 +57,18 @@ public class OrderView extends JFrame{
 		//middlePanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 		//middlePanel.setLayout(new FlowLayout());
 		middlePanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-
+//		middlePanel.setLayout(new GridLayout(2,0));
 		JButton buttonTest = new JButton(new ImageIcon(img));
+//		JButton buttonTest = new JButton("");
+		
+		//https://laonatti.tistory.com/196
+		buttonTest.setBorderPainted(false);
 		buttonTest.setPreferredSize(new Dimension(screenWidth/2,screenWidth/6));
 		middlePanel.add(buttonTest);
 		buttonTest.setMargin(new Insets(0, 0, 0, 0));
 		
 		JButton buttonTest2 = new JButton(new ImageIcon(img));
+//		JButton buttonTest2 = new JButton(" ");
 		buttonTest2.setPreferredSize(new Dimension(screenWidth/2,screenWidth/6));
 		middlePanel.add(buttonTest2);
 		buttonTest2.setMargin(new Insets(0, 0, 0, 0));
