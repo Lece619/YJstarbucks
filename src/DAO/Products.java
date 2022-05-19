@@ -33,11 +33,20 @@ public class Products {
 		}
 	}
 	
+	//product 받아오기
+	public HashMap<String, Integer> getProductPrice() {
+		return productPrice;
+	}
+	//product - 이미지
+	public HashMap<String, String> getProductImage(){
+		return productImage;
+	}
+
 	private void makeProducts() throws IOException {
 		FileWriter fileWriter = new FileWriter(file);
-		fileWriter.write("test1	100	sdf\n");
-		fileWriter.write("test2	323	sdf\n");
-		fileWriter.write("test3	444	ads\n");
+		fileWriter.write("test1	100	src/Imgs/1-01.png\n");
+		fileWriter.write("test2	323	src/Imgs/1-02.png\n");
+		fileWriter.write("test3	444	src/Imgs/1-03.png\n");
 		fileWriter.flush();
 		fileWriter.close();
 	} 
@@ -60,12 +69,23 @@ public class Products {
 		br.close();
 		fileReader.close();
 	}
+	
+	//이미지 가격 받아오기
 	public int getPrice(String productName) {
 		
 		return productPrice.get(productName);
 	}
+
+	
+	//이미지 경로 받아오기
+	public String getImg(String productName) {
+		return productImage.get(productName);
+	}
+	
+
 	
 	public static void main(String[] args) {
 		new Products();
 	}
+	
 }
