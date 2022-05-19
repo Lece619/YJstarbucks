@@ -87,7 +87,7 @@ public class AdminLog extends JFrame implements ActionListener{
 		pwArea.setForeground(Color.white);
 		pwField.setSize((screenWidth*2)/6, screenHeight/10);
 		
-		topPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+		topPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 		topPanel.add(logoLabel);
 		add(topPanel,BorderLayout.NORTH);
 		add(pwArea);
