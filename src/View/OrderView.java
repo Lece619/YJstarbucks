@@ -10,6 +10,8 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Insets;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -28,7 +30,7 @@ import javax.swing.text.html.HTMLDocument.Iterator;
 
 import DAO.Products;
 
-public class OrderView extends JFrame{
+public class OrderView extends JFrame implements ActionListener{
 	Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
 	//높이는 모니터의 2/3 
 	//넓이는 높이에 3/4 
@@ -36,6 +38,8 @@ public class OrderView extends JFrame{
 	int screenWidth = (screenHeight*3)/4;
 	//탑패널
 	JPanel topPanel;
+	//탑패널 - 현재 메뉴 버튼이름
+	String categoriName;
 	//미들패널
 	JPanel middlePanel;
 	
@@ -68,6 +72,7 @@ public class OrderView extends JFrame{
 		JButton categoriBtn1 = topMenuPanel("커피");
 		categoriBtn1.setBackground(Color.white);
 		categoriBtn1.setForeground(sbC);
+		categoriName = categoriBtn1.getActionCommand();
 		JButton categoriBtn2 = topMenuPanel("음료");
 		JButton categoriBtn3 = topMenuPanel("푸드");
 		
@@ -215,6 +220,11 @@ public class OrderView extends JFrame{
 			img = img.getScaledInstance(screenWidth/2*13/14, screenWidth/6*13/14, Image.SCALE_SMOOTH);
 			JButton jButton = new JButton(new ImageIcon(img));	
 			jButton.setPreferredSize(new Dimension(screenWidth/2*13/14,screenWidth/6*13/14));
+			jButton.addActionListener(this);
+			jButton.setActionCommand(product.getKey());
+			//한글 테스트
+			//jButton.setActionCommand("한글테스트");
+		
 			middlePanel.add(jButton);
 			buttonArray.add(jButton);
 			System.out.println(product.getKey()+" "+product.getValue());
@@ -225,5 +235,18 @@ public class OrderView extends JFrame{
 	public static void main(String[] args) {
 		new OrderView().startOrderView();
 		System.out.println(products.getPrice("test1"));
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		//키셋에 포함되어있으면 메뉴버튼
+		if(products.getProductImage().keySet().contains(e.getActionCommand())) {
+			//카테고리 이름별 실행
+			if(categoriName.equals("커피"))
+			System.out.println("keySet 테스트");
+			else {
+				System.out.println("실패");
+			}
+		}
 	}
 }
