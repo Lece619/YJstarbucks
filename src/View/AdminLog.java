@@ -87,9 +87,7 @@ public class AdminLog extends JFrame implements ActionListener{
 		homeBtn.setFocusPainted(false);
 		homeBtn.setPreferredSize(new Dimension(screenHeight/11, screenHeight/11));
 		homeBtn.setName("home");
-		homeBtn.addActionListener(this);
-		
-		
+		homeBtn.addActionListener(this);		
 		
 		pwField.setFont(font);
 		pwArea.setFont(font);
