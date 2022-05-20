@@ -45,9 +45,23 @@ public class Products{
 
 	private void makeProducts() throws IOException {
 		FileWriter fileWriter = new FileWriter(file);
-		fileWriter.write("test1	100	src/Imgs/1-01.png\n");
-		fileWriter.write("test2	323	src/Imgs/1-02.png\n");
-		fileWriter.write("test3	444	src/Imgs/1-03.png\n");
+//		//				상품이름\t가격\t이미지경로\t카테고리
+//		fileWriter.write("test1\t100\tsrc/Imgs/1-01.png\tcoffee\n");
+//		fileWriter.write("test2\t323\tsrc/Imgs/1-02.png\n\tcoffee");
+//		fileWriter.write("test3	444	src/Imgs/1-03.png\n");
+		fileWriter.write(
+				"test1	100	src/Imgs/1-01.png	coffee\n" + 
+				"test2	323	src/Imgs/1-02.png	coffee\n" + 
+				"test3	444	src/Imgs/1-03.png	coffee\n" + 
+				"test4	555	src/Imgs/1-04.png	coffee\n" + 
+				"test5	555	src/Imgs/1-05.png	coffee\n" + 
+				"test6	555	src/Imgs/1-06.png	coffee\n" + 
+				"test7	555	src/Imgs/1-07.png	coffee\n" + 
+				"test8	555	src/Imgs/1-08.png	coffee\n" + 
+				"test9	555	src/Imgs/1-09.png	coffee\n" + 
+				"test10	555	src/Imgs/1-10.png	coffee\n" + 
+				"test11	555	src/Imgs/1-11.png	coffee\n" + 
+				"test12	555	src/Imgs/1-12.png	coffee\n");
 		fileWriter.flush();
 		fileWriter.close();
 	} 

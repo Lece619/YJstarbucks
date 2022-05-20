@@ -14,13 +14,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.Flow;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 import javax.swing.text.html.HTMLDocument.Iterator;
 
@@ -126,7 +129,36 @@ public class OrderView extends JFrame{
 		//바텀 패널 구성
 		JPanel bottomPanel = makePanel(screenWidth,screenHeight*3/10,BorderLayout.SOUTH);
 		
-	
+		JPanel bottomInner1 = new JPanel(new BorderLayout());
+		bottomInner1.setPreferredSize(new Dimension(screenWidth*2/3,screenHeight*3/10));
+		bottomInner1.setBackground(sbC);
+		
+		JLabel orderList = new JLabel("  Order List");
+		orderList.setForeground(Color.white);
+		bottomInner1.add(orderList);
+		JScrollPane orderPane = new JScrollPane();
+		JTextArea orderArea = new JTextArea();
+		orderArea.setEditable(false);
+		orderArea.setBackground(Color.cyan);
+		bottomPanel.setLayout(new FlowLayout(FlowLayout.LEFT,0,0));
+		//orderArea.setPreferredSize(new Dimension(screenWidth*2/3,screenHeight*3/10));
+		orderPane.setViewportView(orderArea);
+		orderPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		orderPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		orderPane.setPreferredSize(new Dimension(screenWidth*2/3,screenHeight*5/20));
+		bottomInner1.add(orderPane,BorderLayout.SOUTH);
+		bottomPanel.add(bottomInner1);
+		
+		//비우기 버튼 , 결제 버튼
+		JPanel bottomInner2 = new JPanel(new BorderLayout());
+		JButton removeList = new JButton("비우기");
+		removeList.setPreferredSize(new Dimension(screenWidth*1/3,screenHeight*1/20));
+		bottomInner2.setPreferredSize(new Dimension(screenWidth*9/30,screenHeight*3/10));
+		bottomInner2.add(removeList,BorderLayout.NORTH);
+		JButton orderBtn = new JButton("주문하기");
+		bottomInner2.add(orderBtn);
+		bottomPanel.add(bottomInner2);	
+		
 		
 //		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		dispose();
