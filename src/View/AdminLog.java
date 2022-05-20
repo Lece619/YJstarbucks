@@ -55,9 +55,11 @@ public class AdminLog extends JFrame implements ActionListener{
 	public void startAdminLog() {
 		setTitle("스타벅스 관리자 로그인 페이지");
 		setSize((screenWidth*2)/3,screenHeight/2);
+		setBackground(sbC);
 		setResizable(false);
 		setLayout(gl);
 		setLocationRelativeTo(null);
+		getContentPane().setBackground(sbC);
 		
 		//topPanel
 		topPanel.setPreferredSize(new Dimension(screenWidth,screenHeight/10));
@@ -82,7 +84,10 @@ public class AdminLog extends JFrame implements ActionListener{
 		JButton homeBtn = new JButton(new ImageIcon(imgHome));
 		homeBtn.setBackground(sbC);
 		homeBtn.setBorderPainted(false);
+		homeBtn.setFocusPainted(false);
 		homeBtn.setPreferredSize(new Dimension(screenHeight/11, screenHeight/11));
+		homeBtn.setName("home");
+		homeBtn.addActionListener(this);
 		
 		
 		
@@ -117,6 +122,7 @@ public class AdminLog extends JFrame implements ActionListener{
 		add(pwArea,gl);
 		add(pwField,gl);
 		add(login,gl);
+		
 	
 		
 		dispose();
@@ -129,7 +135,15 @@ public class AdminLog extends JFrame implements ActionListener{
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-//		System.out.println(e.getActionCommand());
+		System.out.println(e.getActionCommand());
+		Object o = e.getSource();
+		JButton button = (JButton)o;
+		
+		if(button.getName()==null) {			
+		} else if(button.getName().equals("home")) {
+			new MainView().frameTest();
+			dispose();
+		}
 
 		if(e.getActionCommand().equals("Login")) {
 			boolean flag=true;
