@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -29,6 +30,7 @@ public class SalesView extends JFrame implements ActionListener{
 	JPanel topPanel;
 	String salesName;
 	JPanel middlePanel;
+	JLabel salesLabel;
 	JTextArea salesMenu;
 	JScrollPane salesMenuScroll;
 
@@ -76,19 +78,44 @@ public class SalesView extends JFrame implements ActionListener{
 		middlePanel.setVisible(true);
 		middlePanel.setBackground(Color.white);
 		
-
-		// 바텀 - textArea. 메뉴 이름/가격/판매수량/총판매수익 표출
-		// 바텀 - 오늘 날짜 / 총 수익 표출
-		// 각각 라벨로 표출. 비율은 3:1 정도
+		
+		
+		
+		
+		// 바닥 패널 - 상세 매출 표시
+		// 날짜, 총 수익 표기
 		JPanel bottomPanel = makePanel(screenWidth,screenHeight*3/10,BorderLayout.SOUTH);
 		bottomPanel.setBackground(sbC);
-		salesMenu = new JTextArea(screenWidth,(screenHeight*3/10)*3/4);
+		bottomPanel.setLayout(new BorderLayout());
+		
+		JPanel salesPanel = new JPanel();
+		salesPanel.setPreferredSize(new Dimension(screenWidth*14/15,(screenHeight*3/10)*3/5));
+		salesPanel.setLayout(new BorderLayout());
+		
+		salesLabel = new JLabel(" * 상세 매출");
+		salesLabel.setOpaque(true);
+		salesLabel.setBackground(sbC);
+		salesLabel.setForeground(Color.white);
+		salesMenu = new JTextArea("상세 매출 텍스트 구역입니당");
 		salesMenuScroll = new JScrollPane(salesMenu);
-
-
+		salesMenuScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		salesMenuScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		salesMenu.setLineWrap(true);
 		
-
+		JPanel datePanel = new JPanel();
+		datePanel.setPreferredSize(new Dimension(screenWidth*15/30,(screenHeight*3/10)*3/10));
+		datePanel.setBackground(Color.GREEN);
 		
+		JPanel sumSalesPanel = new JPanel();
+		sumSalesPanel.setPreferredSize(new Dimension(screenWidth*15/30,(screenHeight*3/10)*3/10));
+		sumSalesPanel.setBackground(Color.BLUE);
+		
+		salesPanel.add(salesLabel,BorderLayout.NORTH);
+		salesPanel.add(salesMenuScroll,BorderLayout.CENTER);
+		bottomPanel.add(salesPanel, BorderLayout.NORTH);
+		bottomPanel.add(datePanel, BorderLayout.WEST);
+		bottomPanel.add(sumSalesPanel,BorderLayout.EAST);
+
 		add(middlePanel);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setVisible(true);
