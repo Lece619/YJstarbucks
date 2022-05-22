@@ -3,13 +3,21 @@ package View;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
-public class SalesView extends JFrame{
+public class SalesView extends JFrame implements ActionListener{
 	Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
 	//높이는 모니터의 2/3 
 	//넓이는 높이에 3/4 
@@ -17,7 +25,13 @@ public class SalesView extends JFrame{
 	int screenWidth = (screenHeight*3)/4;
 	
 	Color sbC = new Color(1,98,65);
-	Font font = new Font("Impact",Font.BOLD,screenWidth/15);
+	Font font = new Font("Courier",Font.BOLD,screenWidth/30);
+	JPanel topPanel;
+	String salesName;
+	JPanel middlePanel;
+	JTextArea salesMenu;
+	JScrollPane salesMenuScroll;
+
 	
 	public SalesView() {};
 	
@@ -29,13 +43,53 @@ public class SalesView extends JFrame{
 		setLayout(new BorderLayout());
 		setLocationRelativeTo(null);
 		
-		JPanel topPanel= makePanel(screenWidth,screenHeight/10,BorderLayout.NORTH);
+		topPanel= makePanel(screenWidth,screenHeight/10,BorderLayout.NORTH);
 		topPanel.setBackground(sbC);
+		topPanel.setLayout(new FlowLayout(FlowLayout.LEFT,0,0));
 		
+		JButton coffeeBtn = topSalesBtn("커피 매출");
+		JButton drinkBtn = topSalesBtn("음료 매출");
+		JButton foodBtn = topSalesBtn("음식 매출");
 		
+		//탑 - 홈버튼 패널위치
+		JPanel leftPanel4 = new JPanel();
+		leftPanel4.setPreferredSize(new Dimension(screenWidth/5,screenHeight/12));
+		// 홈버튼 
+		leftPanel4.setBackground(sbC);
+		Image imgHome = new ImageIcon("src/sbPromImg/homeBtn2.png").getImage(); 
+		imgHome = imgHome.getScaledInstance(screenWidth/10, screenWidth/10, Image.SCALE_SMOOTH);
+		JButton homeBtn = new JButton(new ImageIcon(imgHome));
 		
+		homeBtn.setPreferredSize(new Dimension(screenWidth/10,screenWidth/10));
+		homeBtn.setBackground(sbC);
+		homeBtn.setBorderPainted(false);
+		homeBtn.addActionListener(this);
+		homeBtn.setActionCommand("home");
+		leftPanel4.setLayout(new FlowLayout(FlowLayout.RIGHT));
+		leftPanel4.add(homeBtn);
 		
+		topPanel.add(leftPanel4);
 		
+		// 미들 - 매출 그래프 표시공간
+		middlePanel = new JPanel();
+		middlePanel.setPreferredSize(new Dimension(screenWidth,(screenHeight*5)/7));
+		middlePanel.setVisible(true);
+		middlePanel.setBackground(Color.white);
+		
+
+		// 바텀 - textArea. 메뉴 이름/가격/판매수량/총판매수익 표출
+		// 바텀 - 오늘 날짜 / 총 수익 표출
+		// 각각 라벨로 표출. 비율은 3:1 정도
+		JPanel bottomPanel = makePanel(screenWidth,screenHeight*3/10,BorderLayout.SOUTH);
+		bottomPanel.setBackground(sbC);
+		salesMenu = new JTextArea(screenWidth,(screenHeight*3/10)*3/4);
+		salesMenuScroll = new JScrollPane(salesMenu);
+
+
+		
+
+		
+		add(middlePanel);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setVisible(true);
 		
@@ -49,8 +103,35 @@ public class SalesView extends JFrame{
 		return panel;
 	}
 	
+	public JButton topSalesBtn(String btnName) {
+		JPanel panel = new JPanel();
+		panel.setPreferredSize(new Dimension(screenWidth/4,screenHeight/10));
+		panel.setLayout(new BorderLayout());
+		panel.setBackground(sbC);
+		JButton button = new JButton(btnName);
+		button.setFont(font);
+		button.setBackground(sbC);
+		button.setBorderPainted(false);
+		button.setForeground(Color.white);
+		button.setFocusPainted(false);
+		button.addActionListener(this);
+		panel.add(button,BorderLayout.SOUTH);
+		topPanel.add(panel);
+		
+		return button;
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getActionCommand().equals("home")) {
+			new MainView().frameTest();
+			dispose();
+		}
+		
+	}
+	
 	public static void main(String[] args) {
 		new SalesView().startSalesView();
 	}
+
 
 }

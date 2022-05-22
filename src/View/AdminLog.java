@@ -86,7 +86,7 @@ public class AdminLog extends JFrame implements ActionListener{
 		homeBtn.setBorderPainted(false);
 		homeBtn.setFocusPainted(false);
 		homeBtn.setPreferredSize(new Dimension(screenHeight/11, screenHeight/11));
-		homeBtn.setName("home");
+		homeBtn.setActionCommand("home");
 		homeBtn.addActionListener(this);		
 		
 		pwField.setFont(font);
@@ -133,11 +133,9 @@ public class AdminLog extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		System.out.println(e.getActionCommand());
-		Object o = e.getSource();
-		JButton button = (JButton)o;
+
 		
-		if(button.getName()==null) {			
-		} else if(button.getName().equals("home")) {
+		if(e.getActionCommand().equals("home")) {
 			new MainView().frameTest();
 			dispose();
 		}
