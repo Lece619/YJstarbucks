@@ -1,9 +1,10 @@
 package View;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
+import java.awt.Color;import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -12,19 +13,24 @@ import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import javax.swing.text.html.HTMLDocument.Iterator;
 
@@ -37,14 +43,15 @@ public class OrderView extends JFrame implements ActionListener{
 	int screenHeight = (dimension.height*2)/3;
 	int screenWidth = (screenHeight*3)/4;
 	Color sbC = new Color(1,98,65);
+	//오더파일
+	private File orderFile = new File("./src/order.txt");
+	
 	//탑패널
 	JPanel topPanel;
 	//탑패널 - 현재 메뉴 버튼이름
 	String categoriName="커피";
+	String orderMenuName="";
 	JButton[] categoriBtn = new JButton[3];
-	JButton categoriBtn1=null;
-	JButton categoriBtn2=null;
-	JButton categoriBtn3=null;
 	
 	//미들패널
 	JPanel middlePanel;
@@ -236,14 +243,10 @@ public class OrderView extends JFrame implements ActionListener{
 				jButton.setVisible(false);
 				middlePanel.add(jButton);
 			}
-			System.out.println("키이름 "+product.getKey()+ "  커피 사이즈"+btnArrayCoffee.size());
+			
 		}
 	}
 	
-	
-	public static void main(String[] args) {
-		new OrderView().startOrderView();
-	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -251,14 +254,16 @@ public class OrderView extends JFrame implements ActionListener{
 		//키셋에 포함되어있으면 메뉴버튼
 		if(products.getProductImage().keySet().contains(e.getActionCommand())) {
 			//카테고리 이름별 실행
+			orderMenuName=e.getActionCommand();
 			if(categoriName.equals("커피"))
 			System.out.println("keySet 테스트");
 			else {
 				System.out.println("실패");
 			}
+			new OptionFrame().startOptionFrame();
 		}
 		//카테고리별 버튼 보이기
-		System.out.println(e.getActionCommand());
+		System.out.println("클릭버튼 :  "+e.getActionCommand());
 		if(e.getActionCommand().equals("커피")) {
 			makeColorMenuBtn(0);
 			int cnt=1;
@@ -321,4 +326,175 @@ public class OrderView extends JFrame implements ActionListener{
 		categoriBtn[(i+2)%3].setForeground(Color.white);
 		categoriName = categoriBtn[i].getActionCommand();
 	}
+	
+	public static void main(String[] args) {
+		new OrderView().startOrderView();
+	}
+	
+	
+	
+	
+	//옵션 창 inner클래스
+	class OptionFrame extends JFrame {
+		JRadioButton[] option_size = new JRadioButton[3];
+		JRadioButton[] option_cup = new JRadioButton[3];
+		JRadioButton[] option_hotIce=new JRadioButton[2];
+		int cnt = 1;
+		JLabel numLabel = new JLabel(cnt+"");
+		
+		public OptionFrame() {
+		}
+		
+		
+		public void chooseIce() {
+			JPanel jPanel = new JPanel(new GridLayout(0,1));
+
+			jPanel.setBorder(new LineBorder(Color.black,1));
+			JLabel label  = new JLabel(" Hot & Ice");
+			JPanel jPanel2 = new JPanel(new GridLayout(1,0));
+			option_hotIce[0] =new JRadioButton("Hot");
+			option_hotIce[1] =new JRadioButton("Ice");
+			ButtonGroup group = new ButtonGroup();
+			group.add(option_hotIce[0]);
+			group.add(option_hotIce[1]);
+			jPanel.add(label);
+			jPanel2.add(option_hotIce[0]);
+			jPanel2.add(option_hotIce[1]);
+			jPanel.add(jPanel2);
+			add(jPanel);
+		}
+		
+		public void chooseSize() {
+			JPanel jPanel = new JPanel(new GridLayout(0,1));
+			jPanel.setBorder(new LineBorder(Color.black,1));
+			JLabel label  = new JLabel(" 사이즈 선택");
+			JPanel jPanel2 = new JPanel(new GridLayout(2,0));
+			option_size[0] =new JRadioButton("Tall");
+			option_size[1] =new JRadioButton("Grande");
+			option_size[2] =new JRadioButton("Venti");
+			JLabel optionFee = new JLabel("");
+			JLabel optionFee1 = new JLabel("(+ 500원)");
+			JLabel optionFee2 = new JLabel("(+ 1,000원)");
+			ButtonGroup group = new ButtonGroup();
+			group.add(option_size[0]);
+			group.add(option_size[1]);
+			group.add(option_size[2]);
+			jPanel.add(label);
+			jPanel2.add(option_size[0]);
+			jPanel2.add(option_size[1]);
+			jPanel2.add(option_size[2]);
+			jPanel2.add(optionFee);
+			jPanel2.add(optionFee1);
+			jPanel2.add(optionFee2);
+			jPanel.add(jPanel2);
+			add(jPanel);
+		}
+		
+		public void chooseCup() {
+			JPanel jPanel = new JPanel(new GridLayout(0,1));
+
+			jPanel.setBorder(new LineBorder(Color.black,1));
+			JLabel label  = new JLabel(" 컵 선택");
+			JPanel jPanel2 = new JPanel(new GridLayout(1,0));
+			option_cup[0] =new JRadioButton("매장컵");
+			option_cup[1] =new JRadioButton("개인컵");
+			option_cup[2] =new JRadioButton("일회용컵");
+			ButtonGroup group = new ButtonGroup();
+			group.add(option_cup[0]);
+			group.add(option_cup[1]);
+			group.add(option_cup[2]);
+			jPanel.add(label);
+			jPanel2.add(option_cup[0]);
+			jPanel2.add(option_cup[1]);
+			jPanel2.add(option_cup[2]);
+			jPanel.add(jPanel2);
+			add(jPanel);
+		}
+		
+		public void inputOrderPanel() {
+			JPanel jPanel = new JPanel(new GridLayout(0,1));
+
+			jPanel.setBorder(new LineBorder(Color.black,1));
+			JPanel cntPanel = new JPanel(new GridLayout(1,0));
+			
+			JButton plusBtn = new JButton("+");
+			JButton minusBtn = new JButton("-");
+			plusBtn.setBackground(Color.white);
+			minusBtn.setBackground(Color.white);
+			JLabel label = new JLabel("수량 :");
+			cntPanel.add(plusBtn);
+			cntPanel.add(minusBtn);
+			cntPanel.add(label);
+			cntPanel.add(numLabel);
+			
+			JPanel orderPanel = new JPanel(new GridLayout(1,0));
+			JButton cancel = new JButton("취소");
+			JButton addOrder = new JButton("담기");
+			orderPanel.add(cancel);
+			orderPanel.add(addOrder);
+			jPanel.add(cntPanel);
+			jPanel.add(orderPanel);
+			add(jPanel);
+		}
+		
+		public void startOptionFrame() {
+			setTitle("옵션을 선택해 주세요");
+			
+			setResizable(false);
+			setLayout(new GridLayout(0,1));
+			setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+			
+			JPanel optionNamePanel = new JPanel(new GridLayout(0,1));
+			
+			JLabel optionLabel = new JLabel(" Choose Option");
+			optionNamePanel.setBorder(new LineBorder(Color.black,3));
+			optionLabel.setBackground(sbC);
+			optionLabel.setForeground(Color.white);
+			optionLabel.setVisible(true);
+			optionNamePanel.add(optionLabel);
+			optionNamePanel.setBackground(sbC);
+			JLabel optionLabel2 = new JLabel(" "+orderMenuName);
+			optionLabel2.setBackground(sbC);
+			optionLabel2.setForeground(Color.white);
+			optionLabel2.setVisible(true);
+			optionNamePanel.add(optionLabel2);
+			
+			if(categoriName.equals("커피")) {
+				setSize(screenWidth*3/5,screenHeight*3/4);
+				add(optionNamePanel);
+				chooseIce();
+				chooseSize();
+				chooseCup();
+				inputOrderPanel();
+				//putInBtn();
+			}else if(categoriName.equals("음료")){
+				setSize(screenWidth*3/5,screenHeight*3/4*4/5);
+				add(optionNamePanel);
+				chooseSize();
+				chooseCup();
+				inputOrderPanel();
+			}else {
+				setSize(screenWidth*3/5,screenHeight*3/4*2/5);
+				add(optionNamePanel);
+				inputOrderPanel();
+			}
+			setLocationRelativeTo(null);
+			
+			
+			//수량 담기버튼
+			JPanel radioPanel4 = new JPanel(new FlowLayout());
+			JLabel radioOption4 = new JLabel("사이즈2");
+			radioPanel4.setBackground(Color.gray);
+			radioPanel4.setSize(new Dimension(screenWidth/3,screenHeight/12));
+			radioOption4.setPreferredSize(new Dimension(screenWidth/3,screenHeight/12));
+			radioPanel4.add(radioOption4);
+			
+			JRadioButton test =new JRadioButton("선택");
+		//	add(test);
+			
+			setVisible(true);
+			
+		}
+	}
+	
 }
