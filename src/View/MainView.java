@@ -35,13 +35,8 @@ public class MainView extends JFrame implements ActionListener{
 	Color sbC = new Color(1,98,65);
 	Font font = new Font("Impact",Font.BOLD,screenWidth/15);
 	
-	static private MainView mainView = null;
-	public static MainView getInstance() {
-		if(mainView==null) {
-			mainView = new MainView();
-		}
-		return mainView;
-	}
+	
+	
 	public MainView() {
 	}
 	
@@ -103,9 +98,6 @@ public class MainView extends JFrame implements ActionListener{
 			break;
 		case "SALES" :
 			new AdminLog().startAdminLog();
-//			dispose();
-			break;
-		case "LOGIN" :
 			dispose();
 			break;
 		}
@@ -113,8 +105,7 @@ public class MainView extends JFrame implements ActionListener{
 	}
 	
 	public static void main(String[] args) {
-		MainView mainViewTest = MainView.getInstance();
-		mainViewTest.frameTest();
+		new MainView().frameTest();
 	}
 
 }

@@ -43,7 +43,7 @@ public class AdminLog extends JFrame implements ActionListener{
 //	JButton login = new JButton("Login");
 //	RoundedButton login = new RoundedButton("Login");
 	
-	JButton login = new JButton("LOGIN");
+	JButton login = new JButton("Login");
 	JLabel pwArea = new JLabel("관리자 비밀번호 입력");
 	
 	FlowLayout fl = new FlowLayout();
@@ -97,10 +97,6 @@ public class AdminLog extends JFrame implements ActionListener{
 		login.setBackground(sbC);
 		login.setForeground(Color.white);
 		login.addActionListener(this);
-		
-		// 싱글톤으로 선언한 mainview랑 연결하기 위한 부분
-		//login버튼 클릭시 mainview단 닫힘
-		login.addActionListener(MainView.getInstance());
 		pwArea.setSize((screenWidth*2)/6, screenHeight/10);
 		pwArea.setBackground(sbC);
 		pwArea.setOpaque(true);
@@ -143,12 +139,11 @@ public class AdminLog extends JFrame implements ActionListener{
 		
 		if(button.getName()==null) {			
 		} else if(button.getName().equals("home")) {
+			new MainView().frameTest();
 			dispose();
-			MainView mainViewTest = MainView.getInstance();
-			mainViewTest.frameTest();
 		}
 
-		if(e.getActionCommand().equals("LOGIN")) {
+		if(e.getActionCommand().equals("Login")) {
 			boolean flag=true;
 
 			if(getAdminPw().length()!=pwField.getPassword().length) {
