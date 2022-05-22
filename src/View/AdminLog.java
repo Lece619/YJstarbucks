@@ -122,8 +122,7 @@ public class AdminLog extends JFrame implements ActionListener{
 		add(login,gl);
 		
 	
-		
-		dispose();
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setVisible(true);
 	}
 

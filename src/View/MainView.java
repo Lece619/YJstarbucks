@@ -82,7 +82,8 @@ public class MainView extends JFrame implements ActionListener{
 		add(btnP,BorderLayout.SOUTH);
 
 //		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		dispose();
+		
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setVisible(true);
 		
 	}

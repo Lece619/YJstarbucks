@@ -35,7 +35,8 @@ public class SalesView extends JFrame{
 		
 		
 		
-		dispose();
+		
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setVisible(true);
 		
 	}
