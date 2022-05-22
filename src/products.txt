@@ -1,0 +1,36 @@
+아메리카노	4500	src/Imgs/1-01.png	coffee
+바닐라 더블 샷	5100	src/Imgs/1-02.png	coffee
+카페 모카	5500	src/Imgs/1-03.png	coffee
+카페 라떼	5000	src/Imgs/1-04.png	coffee
+돌체 라떼	5900	src/Imgs/1-05.png	coffee
+카라멜 마끼아또	5900	src/Imgs/1-06.png	coffee
+아메리카노	4500	src/Imgs/1-07.png	coffee
+에스프레소 콘파냐	4200	src/Imgs/1-08.png	coffee
+초코 라떼	5700	src/Imgs/1-09.png	coffee
+카푸치노	5000	src/Imgs/1-10.png	coffee
+바닐라 플랫 화이트	5900	src/Imgs/1-11.png	coffee
+에스프레소 마끼아또	4000	src/Imgs/1-12.png	coffee
+딸기 요거트 블렌디드	6300	src/Imgs/2-01.png	drink
+망고 푸르트 블렌디드	5400	src/Imgs/2-02.png	drink
+피치 레몬 블렌디드	6300	src/Imgs/2-03.png	drink
+블랙 티 레몬 피지오	5400	src/Imgs/2-04.png	drink
+쿨라임 피지오	5900	src/Imgs/2-05.png	drink
+패션 탱고 피지오	5400	src/Imgs/2-06.png	drink
+자몽 허니 블랙티	5700	src/Imgs/2-07.png	drink
+유스베리 티	4500	src/Imgs/2-08.png	drink
+제주 유기농 녹차	5300	src/Imgs/2-09.png	drink
+차이 티 라떼	5500	src/Imgs/2-10.png	drink
+돌체 블랙 밀크티	5900	src/Imgs/2-11.png	drink
+스팀 우유	4100	src/Imgs/2-12.png	drink
+더블 에그 샐러드	6500	src/Imgs/3-01.png	food
+콥 화이트 샐러드	6500	src/Imgs/3-02.png	food
+루꼴라 샌드위치	5400	src/Imgs/3-03.png	food
+잉글리쉬 머핀	4200	src/Imgs/3-04.png	food
+클래식 스콘	3300	src/Imgs/3-05.png	food
+연유 밀크모닝 빵	4300	src/Imgs/3-06.png	food
+단호박 크림 스프	4200	src/Imgs/3-07.png	food
+그릭 요거트	4200	src/Imgs/3-08.png	food
+우유 푸딩	3300	src/Imgs/3-09.png	food
+초코 케이크	5900	src/Imgs/3-10.png	food
+티라미수 롤	5900	src/Imgs/3-11.png	food
+생크림 카스테라	4500	src/Imgs/3-12.png	food

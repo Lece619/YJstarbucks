@@ -47,7 +47,9 @@ public class OrderView extends JFrame implements ActionListener{
 	Color sbC = new Color(1,98,65);
 	
 	//Products 불러오기
-	ArrayList<JButton> buttonArray = new ArrayList<>();
+	ArrayList<JButton> btnArrayCoffee = new ArrayList<>();
+	ArrayList<JButton> btnArrayDrink = new ArrayList<>();
+	ArrayList<JButton> btnArrayFood = new ArrayList<>();
 	
 	
 	public static Products products = new Products();
@@ -69,12 +71,12 @@ public class OrderView extends JFrame implements ActionListener{
 		topPanel.setLayout(new FlowLayout(FlowLayout.LEFT,0,0));
 		//탑 패널속 작은 패널 -버튼들
 
-		JButton categoriBtn1 = topMenuPanel("커피");
+		JButton categoriBtn1 = topMenuBtn("커피");
 		categoriBtn1.setBackground(Color.white);
 		categoriBtn1.setForeground(sbC);
 		categoriName = categoriBtn1.getActionCommand();
-		JButton categoriBtn2 = topMenuPanel("음료");
-		JButton categoriBtn3 = topMenuPanel("푸드");
+		JButton categoriBtn2 = topMenuBtn("음료");
+		JButton categoriBtn3 = topMenuBtn("푸드");
 		
 		//탑 - 홈버튼 패널위치
 		JPanel leftPanel4 = new JPanel();
@@ -105,24 +107,12 @@ public class OrderView extends JFrame implements ActionListener{
 				  JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.
 				  HORIZONTAL_SCROLLBAR_NEVER);
 		middleScroll.setPreferredSize(new Dimension(screenWidth,(screenHeight*5)/10));
-		
-		
 		// 스크롤 속도 설정
 		middleScroll.getVerticalScrollBar().setUnitIncrement(16);
 		
-		//가운데 패널 이미지 \ - makeMenuButton
-		//https://laonatti.tistory.com/196
-				//주변없애기
+		//가운데 패널 이미지 \ 
 				//buttonTest.setBorderPainted(false);
-				
-		/* 이미지 버튼 구성단 - makeMenuButton 매서드로 구현
-		 * Image img = new ImageIcon("src/Imgs/1-01.png").getImage(); img =
-		 * img.getScaledInstance(screenWidth/2, screenWidth/6, Image.SCALE_SMOOTH);
-		 * JButton buttonTest = new JButton(new ImageIcon(img));
-		 * buttonTest.setPreferredSize(new Dimension(screenWidth/2,screenWidth/6));
-		 * middlePanel.add(buttonTest);
-		 */
-		
+		//public void makeMenuButton(String category) 버튼 생성 
 		makeMenuButton(null);
 		
 		
@@ -143,7 +133,7 @@ public class OrderView extends JFrame implements ActionListener{
 		JScrollPane orderPane = new JScrollPane();
 		JTextArea orderArea = new JTextArea();
 		orderArea.setEditable(false);
-		orderArea.append("아메리카노\t\t\t수량\n");
+		orderArea.append("아메리카노\t\t수량\n");
 		orderArea.append("에스프레소 콘파다냐\t\t수량\n");
 		orderArea.append("└옵션: \n");
 		orderArea.append("==========================\n");
@@ -196,7 +186,7 @@ public class OrderView extends JFrame implements ActionListener{
 	}
 	
 	//탑 패널 카테고리 버튼 만들기 
-	public JButton topMenuPanel(String btnName) {
+	public JButton topMenuBtn(String btnName) {
 		JPanel panel = new JPanel();
 		panel.setPreferredSize(new Dimension(screenWidth/6,screenHeight/10));
 		panel.setLayout(new BorderLayout());
@@ -215,6 +205,7 @@ public class OrderView extends JFrame implements ActionListener{
 	//메뉴 버튼 만들기 매서드
 	public void makeMenuButton(String category) {
 		
+		
 		for(Map.Entry<String, String> product : products.getProductImage().entrySet()) {
 			Image img = new ImageIcon(product.getValue()).getImage();
 			img = img.getScaledInstance(screenWidth/2*13/14, screenWidth/6*13/14, Image.SCALE_SMOOTH);
@@ -224,9 +215,15 @@ public class OrderView extends JFrame implements ActionListener{
 			jButton.setActionCommand(product.getKey());
 			//한글 테스트
 			//jButton.setActionCommand("한글테스트");
-		
-			middlePanel.add(jButton);
-			buttonArray.add(jButton);
+			if(products.getCategori(product.getKey()).equals("coffee")) {
+				middlePanel.add(jButton);
+				btnArrayCoffee.add(jButton);
+			}
+			else if(products.getCategori(product.getKey()).equals("drink")) {
+				btnArrayDrink.add(jButton);
+			}else if(products.getCategori(product.getKey()).equals("food")) {
+				btnArrayFood.add(jButton);
+			}
 			System.out.println(product.getKey()+" "+product.getValue());
 		}
 	}
@@ -234,7 +231,6 @@ public class OrderView extends JFrame implements ActionListener{
 	
 	public static void main(String[] args) {
 		new OrderView().startOrderView();
-		System.out.println(products.getPrice("test1"));
 	}
 
 	@Override
@@ -247,6 +243,11 @@ public class OrderView extends JFrame implements ActionListener{
 			else {
 				System.out.println("실패");
 			}
+		}
+		//카테고리별 버튼 보이기
+		System.out.println(e.getActionCommand());
+		if(e.getActionCommand().equals("커피")) {
+			System.out.println("커피버튼");
 		}
 	}
 }
