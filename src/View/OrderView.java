@@ -36,15 +36,20 @@ public class OrderView extends JFrame implements ActionListener{
 	//넓이는 높이에 3/4 
 	int screenHeight = (dimension.height*2)/3;
 	int screenWidth = (screenHeight*3)/4;
+	Color sbC = new Color(1,98,65);
 	//탑패널
 	JPanel topPanel;
 	//탑패널 - 현재 메뉴 버튼이름
-	String categoriName;
+	String categoriName="커피";
+	JButton[] categoriBtn = new JButton[3];
+	JButton categoriBtn1=null;
+	JButton categoriBtn2=null;
+	JButton categoriBtn3=null;
+	
 	//미들패널
 	JPanel middlePanel;
 	
 	
-	Color sbC = new Color(1,98,65);
 	
 	//Products 불러오기
 	ArrayList<JButton> btnArrayCoffee = new ArrayList<>();
@@ -71,12 +76,10 @@ public class OrderView extends JFrame implements ActionListener{
 		topPanel.setLayout(new FlowLayout(FlowLayout.LEFT,0,0));
 		//탑 패널속 작은 패널 -버튼들
 
-		JButton categoriBtn1 = topMenuBtn("커피");
-		categoriBtn1.setBackground(Color.white);
-		categoriBtn1.setForeground(sbC);
-		categoriName = categoriBtn1.getActionCommand();
-		JButton categoriBtn2 = topMenuBtn("음료");
-		JButton categoriBtn3 = topMenuBtn("푸드");
+		categoriBtn[0] = topMenuBtn("커피");
+		categoriBtn[1] = topMenuBtn("음료");
+		categoriBtn[2] = topMenuBtn("푸드");
+		makeColorMenuBtn(0);
 		
 		//탑 - 홈버튼 패널위치
 		JPanel leftPanel4 = new JPanel();
@@ -90,6 +93,8 @@ public class OrderView extends JFrame implements ActionListener{
 		homeBtn.setPreferredSize(new Dimension(screenWidth/10,screenWidth/10));
 		homeBtn.setBackground(sbC);
 		homeBtn.setBorderPainted(false);
+		homeBtn.setActionCommand("home");
+		homeBtn.addActionListener(this);
 		leftPanel4.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		leftPanel4.add(homeBtn);
 		
@@ -192,6 +197,7 @@ public class OrderView extends JFrame implements ActionListener{
 		panel.setLayout(new BorderLayout());
 		panel.setBackground(sbC);
 		JButton button = new JButton(btnName);
+		button.addActionListener(this);
 		button.setBackground(sbC);
 		button.setBorderPainted(false);
 		button.setForeground(Color.white);
@@ -215,16 +221,22 @@ public class OrderView extends JFrame implements ActionListener{
 			jButton.setActionCommand(product.getKey());
 			//한글 테스트
 			//jButton.setActionCommand("한글테스트");
+			
 			if(products.getCategori(product.getKey()).equals("coffee")) {
 				middlePanel.add(jButton);
 				btnArrayCoffee.add(jButton);
+				System.out.println("버튼하나 넣음"+btnArrayCoffee.size());
 			}
 			else if(products.getCategori(product.getKey()).equals("drink")) {
 				btnArrayDrink.add(jButton);
+				jButton.setVisible(false);
+				middlePanel.add(jButton);
 			}else if(products.getCategori(product.getKey()).equals("food")) {
 				btnArrayFood.add(jButton);
+				jButton.setVisible(false);
+				middlePanel.add(jButton);
 			}
-			System.out.println(product.getKey()+" "+product.getValue());
+			System.out.println("키이름 "+product.getKey()+ "  커피 사이즈"+btnArrayCoffee.size());
 		}
 	}
 	
@@ -235,6 +247,7 @@ public class OrderView extends JFrame implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		Object o = e.getSource();
 		//키셋에 포함되어있으면 메뉴버튼
 		if(products.getProductImage().keySet().contains(e.getActionCommand())) {
 			//카테고리 이름별 실행
@@ -247,7 +260,65 @@ public class OrderView extends JFrame implements ActionListener{
 		//카테고리별 버튼 보이기
 		System.out.println(e.getActionCommand());
 		if(e.getActionCommand().equals("커피")) {
-			System.out.println("커피버튼");
+			makeColorMenuBtn(0);
+			int cnt=1;
+			for (JButton jButton : btnArrayCoffee) {
+				jButton.setVisible(true);
+				System.out.println(jButton.getActionCommand()+" "+(cnt++));
+			}for (JButton jButton : btnArrayDrink) {
+				jButton.setVisible(false);
+			}
+			for (JButton jButton : btnArrayFood) {
+				jButton.setVisible(false);
+				middlePanel.add(jButton);
+			}
+			middlePanel.repaint();
+		}else if(e.getActionCommand().equals("음료")) {
+			makeColorMenuBtn(1);
+			for (JButton jButton : btnArrayCoffee) {
+				jButton.setVisible(false);
+			}
+			for (JButton jButton : btnArrayDrink) {
+				jButton.setVisible(true);
+			}
+			for (JButton jButton : btnArrayFood) {
+				jButton.setVisible(false);
+				middlePanel.add(jButton);
+			}
+			middlePanel.repaint();
+		}else if(e.getActionCommand().equals("푸드")) {
+			makeColorMenuBtn(2);
+			for (JButton jButton : btnArrayCoffee) {
+				jButton.setVisible(false);
+			}for (JButton jButton : btnArrayDrink) {
+				jButton.setVisible(false);
+			}
+			for (JButton jButton : btnArrayFood) {
+				jButton.setVisible(true);
+				middlePanel.add(jButton);
+			}
+			middlePanel.repaint();
 		}
+		
+		
+		switch(e.getActionCommand()) {
+			case  "home" :
+				new MainView().frameTest();
+				dispose();
+				break;
+			
+		}
+		
+	}
+	
+	//카테고리 별 색 넣기
+	public void makeColorMenuBtn(int i) {
+		categoriBtn[i%3].setBackground(Color.white);
+		categoriBtn[i%3].setForeground(sbC);
+		categoriBtn[(i+1)%3].setBackground(sbC);
+		categoriBtn[(i+1)%3].setForeground(Color.white);
+		categoriBtn[(i+2)%3].setBackground(sbC);
+		categoriBtn[(i+2)%3].setForeground(Color.white);
+		categoriName = categoriBtn[i].getActionCommand();
 	}
 }
