@@ -14,8 +14,10 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -326,14 +328,6 @@ public class OrderView extends JFrame implements ActionListener{
 		categoriBtn[(i+2)%3].setForeground(Color.white);
 		categoriName = categoriBtn[i].getActionCommand();
 	}
-	
-	public static void main(String[] args) {
-		new OrderView().startOrderView();
-	}
-	
-	
-	
-	
 	//옵션 창 inner클래스
 	class OptionFrame extends JFrame {
 		JRadioButton[] option_size = new JRadioButton[3];
@@ -497,4 +491,15 @@ public class OrderView extends JFrame implements ActionListener{
 		}
 	}
 	
+	
+	public static void main(String[] args) {
+		new OrderView().startOrderView();
+		Calendar calendar = Calendar.getInstance();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		System.out.println(sdf.format(calendar.getTime()));
+	}
 }
+
+
+
+

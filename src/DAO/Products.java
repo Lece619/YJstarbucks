@@ -14,11 +14,11 @@ public class Products{
 	
 	private File file = new File("./src/products.txt");
 	//상품, 가격
-	private HashMap<String,Integer> productPrice = new HashMap<>();
+	private TreeMap<String,Integer> productPrice = new TreeMap<>();
 	//상품, 파일경로
 	private TreeMap<String,String> productImage = new TreeMap<>();
 	//상품, 카테고리
-	private HashMap<String,String> productCategori = new HashMap<>();
+	private TreeMap<String,String> productCategori = new TreeMap<>();
 	
 
 	public Products() {
@@ -38,7 +38,7 @@ public class Products{
 	}
 	
 	//product 받아오기
-	public HashMap<String, Integer> getProductPrice() {
+	public TreeMap<String, Integer> getProductPrice() {
 		return productPrice;
 	}
 	//product - 이미지
@@ -46,7 +46,7 @@ public class Products{
 		return productImage;
 	}
 	//카테고리 
-	public HashMap<String, String> getProductCategori() {
+	public TreeMap<String, String> getProductCategori() {
 		return productCategori;
 	}
 
