@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -17,6 +19,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.border.LineBorder;
 
 public class SalesView extends JFrame implements ActionListener{
 	Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
@@ -25,10 +28,12 @@ public class SalesView extends JFrame implements ActionListener{
 	int screenHeight = (dimension.height*2)/3;
 	int screenWidth = (screenHeight*3)/4;
 	
+	int [] salesCount= {0,0,0,0,0,0,0,0,0,0,0,0};
+	String [] salesName= {"커피1","커피2","커피3","커피4","커피5","커피6","커피7","커피8","커피9","커피10","커피11","커피12"};
+	
 	Color sbC = new Color(1,98,65);
 	Font font = new Font("Courier",Font.BOLD,screenWidth/30);
 	JPanel topPanel;
-	String salesName;
 	JPanel middlePanel;
 	JLabel salesLabel;
 	JTextArea salesMenu;
@@ -78,6 +83,12 @@ public class SalesView extends JFrame implements ActionListener{
 		middlePanel.setVisible(true);
 		middlePanel.setBackground(Color.white);
 		
+		GridLayout gl = new GridLayout(13,11);
+		middlePanel.setLayout(gl);
+		
+		// 그래프
+
+
 		
 		
 		
@@ -154,11 +165,21 @@ public class SalesView extends JFrame implements ActionListener{
 			dispose();
 		}
 		
+		// 각 버튼이 클릭될 때 repaint 되도록
+		switch(e.getActionCommand()) {
+		case "커피 매출":
+			System.out.println(e.getActionCommand()+" 클릭됨");
+			break;
+		case "음료 매출":
+			break;
+		case "음식 매출":
+			break;
+		}
+		
 	}
 	
 	public static void main(String[] args) {
 		new SalesView().startSalesView();
 	}
-
-
 }
+
