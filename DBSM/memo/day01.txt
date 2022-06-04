@@ -1,0 +1,43 @@
+5/16
+4~5일 정도 DB 수업
+
+JSP HTML+JAVA 20일
+
+SPRING 10일
+
+PROJECT
+
+ANDROID
+
+oracle.com
+Products -> Oracle Database -> 11g 버전으로 진행할 예정...
+>> 홈페이지에서 받기는 너무 복잡함. (인증, 로그인 ...)
+
+보통 홀수 버전이 안정적
+짝수 : 테스트용. 추가기능버전.
+
+제어판에서 다른 버전의 db 존재하는지 확인
+(앱 및 기능에서 oracle)
+
+http://naver.me/FjxWt0YN
+1111
+
+DISK1 다운
+util 에 알집 풀어서 setup 실행
+저장 디스크에 oraclexe 폴더가 이미 있다면 지우고 진행
+Port for Oracle HTTP Listener : 8080 또는 8081
+
+비밀번호 설정
+학원 : 1111
+(개인 비밀번호 설정도 가능
+까먹지 않게 잘 설정)
+
+바탕화면 
+아이콘 우클릭 속성 > 파일위치열기
+
+Get_Started 파일 수정해주기
+우클릭 >> 속성 >> % % 사이 구간만 잘라내고 8080 또는 8081로 변경
+
+
+
+

@@ -5,7 +5,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -19,7 +18,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.border.LineBorder;
 
 public class SalesView extends JFrame implements ActionListener{
 	Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
@@ -83,8 +81,8 @@ public class SalesView extends JFrame implements ActionListener{
 		middlePanel.setVisible(true);
 		middlePanel.setBackground(Color.white);
 		
-		GridLayout gl = new GridLayout(13,11);
-		middlePanel.setLayout(gl);
+		middlePanel.setLayout(new GridLayout(13,11));
+		
 		
 		// ±×·¡ÇÁ
 

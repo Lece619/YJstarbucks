@@ -1,0 +1,22 @@
+SELECT : 데이터를 조회할 때 사용하는 키워드
+
+테이블에서 모든 정보를 조회하는 법
+SELECT * FROM 테이블명
+
+테이블에서 원하는 정보만 조회하는 법
+SELECT (원하는 정보의 COLUMN명) FROM 테이블명
+>> 원하는 정보의 CLOUMN명을 잘 모를경우
+스키마 작성 후 참고하기
+
+WHERE : 사용자가 원하는 데이터를 검색할 때 조건을 통해 결과를 간추릴 수 있다.
+
+WHERE은 항상 FROM 뒤에 위치한다.
+
+SELECT EMPLOYEE_ID FROM EMPLOYEE WHERE SALARY >= 10000;
+
+DataBase
+- 그리고 : AND / BETWEEN
+- 또는 : OR / IN(비교값1,비교값2)
+
+% : 모든값
+_ : 하나의 값
