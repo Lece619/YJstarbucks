@@ -1,0 +1,59 @@
+4. SQL 함수 (메서드)
+
+1. 문자함수
+- UPPER() : 알파벳 값을 대문자로 변환
+- LOWER() : 알파벳 값을 소문자로 변환
+- INITCAP() : 알파벳의 첫 글자만 대문자로 변환
+- SUBSTR(단어,숫자) : 단어의 숫자번째 값부터 출력을 한다.
+		숫자가 두개(단어,1,2)일 경우 첫번째 숫자 단어번째부터 두번째 숫자번째까지 출력
+- REPLACE('ABC','A','Z') : 필요한 문장을 교체하는 메서드 
+		맨 앞이 교체할 문장 , 두번째 값이 교체할 값, 세번째 값이 바꿀 값.
+- 단어를 합칠 경우에는 || 를 사용함
+
+2. 숫자함수
+- ROUND(3.141592,4) : ,을 기준으로 앞의 소수를 뒤의 자릿수까지 출력, 그 이후는 반올림하여 출력
+- TRUNC(3.141592,3) : ,를 기준으로 앞의 소수를 뒤의 자릿수까지 출력, 그 이후는 버림하여 출력
+- POWER(3,2) : 제곱을 구하는 메서드. 3의 2승 출력
+- MOD(10,3) : 나머지를 구하는 메서드. 10을 3으로 나눈 나머지 출력
+	(DB에서는 %를 이용하여 나머지를 구할 수 없음)
+
+3. 날짜함수
+- SYSDATE : 현재 시간을 알려주는 키워드
+- ADD_MONTHS(SYSDATE,2) : 특정 날짜에 개월수를 더해줌 . 현재 날짜에 2개월을 더한 값 출력
+- MONTHS_BETWEEN(A,B) : 두 날짜 사이의 개월수를 구함
+
+- TO_CHAR() : 포멧ㅇ르 지정하여 출력할 수 있도록 하는 메서드
+EX) 오늘 날짜 출력
+SELECT TO_CHAR(SYSDATE,'YYYY-MM-DD') FROM DUAL;
+SELECT TO_CHAR(SYSDATE,'YYYY-MM-DD DAY') FROM DUAL;
+SELECT TO_CHAR(SYSDATE,'YYYY-MM-DD HH:MI:SS') FROM DUAL;
+
+* 날짜 형식의 FORMATTING 모델
+	0) SCC : 세기
+	1) YYYY 또는 YY : 년도
+	2) MM / FMMM:  월 / 한자릿수 월
+	3) DD : 일
+	4) MON / MONTH : 월의 이름
+	5) DAY : 요일
+	6) HH : 12단위 시 / HH24 : 24단위 시
+	7) MI : 분
+	8) SS : 초
+
+4. 그룹함수 : 여러줄의 행 또는 테이블 전체에 대한 조회를 통해 하나의 결과물로 가져오는 함수
+- AVG() : 평균값
+- COUNT() : 반환된 행의 갯수
+- MAX() : 최대값
+- MIN() : 최소값
+- SUM() : 총 합
+
+일반 컬럼과 그룹함수를 같이 사용하려면 GROUP BY 를 사용해야 한다.
+
+* 작성 순서
+FROM + WHERE + GROUP BY +ORDER BY
+
+예) 각 직종별 인원수 출력
+SELECT JOB_ID, COUNT(*) FROM EMPLOYEES GROUP BY JOB_ID ORDER BY JOB_ID;
+
+
+
+

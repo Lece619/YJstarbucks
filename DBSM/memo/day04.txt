@@ -1,0 +1,37 @@
+HAVING절
+: 그룹함수에서 조건처리가 필요할 때 WHERE 대신에 사용하는 QUERY문
+
+일반컬럼 EX)EMPLOYEE_ID의 경우 : WHERE로 조건 
+그룹함수 EX) SUM(SALARY) : HAVING 조건
+
+SUBQUERY문
+: 특정 SQL 문장 안에 또 다른 SQL 문장이 포함되어 있는 것
+: 여러번 DB접속이 필요한 상황을 한 번으로 줄여서 속도를 증가시킬 수 있다.
+>> 한번에 만들기가 헷갈린다면, SELECT절이 몇 개 필요한 지 생각을 해보고
+나눠서 만들고 합치기
+
+SUBQUERY는 사용할 수 있는 곳이 정해져 있음.
+1) WHERE, HAVING절
+2) SELECT, DELETE문의 FROM절
+3) UPDATE문의 SET
+4) INSERT문의 INTO
+
+JOIN
+: 서로 다른 테이블을 오가면서 데이터를 가지고 오는 형태
+1) PRIMARY KEY (기본키) 
+: 하나의 테이블에서 중복된 값이 추가되면 안되는 컬럼
+2) CANDIDATE KEY (후보키)
+: 기본키가 될 자격이 있는 모든 컬럼
+3) FOREIGN KEY (외래키)
+: 한 테이블의 기본키가 다른 테이블의 속성이 되는 것
+
+JOIN을 사용하려면 반드시 해당 테이블의 별칭을 만들어 사용해주어야 함
+
+VIEW 
+: 조회를 목적으로 만드는 가상의 테이블
+
+CREATE OR REPLACE VIEW 새로만들테이블명 AS
+SELECT 컬럼명1, 컬럼명2
+FROM 갖고 올 테이블명
+
+* VIEW에서도 JOIN이 가능함!
